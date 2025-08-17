@@ -57,60 +57,15 @@ class Render {
             return false;
         }
         
-        // Check user capabilities
-        if (!current_user_can('manage_options')) {
-            return false;
-        }
+        // Show for all logged-in admin users regardless of role (remove manage_options restriction)
         
         $options = get_option('awm_options', []);
         
         // Check role restrictions
-        if (!empty($options['roles'])) {
-            $user = wp_get_current_user();
-            $user_roles = $user->roles;
-            $allowed_roles = $options['roles'];
-            
-            $has_allowed_role = false;
-            foreach ($user_roles as $role) {
-                if (in_array($role, $allowed_roles)) {
-                    $has_allowed_role = true;
-                    break;
-                }
-            }
-            
-            if (!$has_allowed_role) {
-                return false;
-            }
-        }
+        // Role restrictions removed in v1.1.2
         
         // Check screen restrictions
-        if (!empty($options['screens'])) {
-            $current_screen = function_exists('get_current_screen') ? get_current_screen() : null;
-            if ($current_screen) {
-                $raw = array_filter(array_map('trim', preg_split('/\r\n|\r|\n/', $options['screens'])));
-                // Allow both exact screen IDs and partial/filename patterns
-                $allowed_screens = array_map('strtolower', $raw);
-                $screen_id = strtolower($current_screen->id);
-                $base_match = false;
-                foreach ($allowed_screens as $pattern) {
-                    if ($pattern === '') continue;
-                    // Normalize common entries like /upload.php to 'upload'
-                    $normalized = $pattern;
-                    if (strpos($normalized, '.php') !== false) {
-                        $normalized = basename($normalized, '.php');
-                    }
-                    $normalized = trim($normalized, "/ ");
-                    $normalized = strtolower($normalized);
-                    if ($normalized !== '' && (strpos($screen_id, $normalized) !== false || $screen_id === $normalized)) {
-                        $base_match = true;
-                        break;
-                    }
-                }
-                if (!$base_match) {
-                    return false;
-                }
-            }
-        }
+        // Screen restrictions removed in v1.1.2
         
         // Apply filters for developers
         return apply_filters('awm_should_show_modal', true, get_current_screen(), wp_get_current_user());

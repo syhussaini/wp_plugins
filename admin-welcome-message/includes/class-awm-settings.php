@@ -53,12 +53,7 @@ class Settings {
             'admin-welcome-message-appearance'
         );
         
-        add_settings_section(
-            'awm_targeting_section',
-            __('Targeting Settings', 'admin-welcome-message'),
-            [$this, 'render_targeting_section'],
-            'admin-welcome-message'
-        );
+        // Targeting section removed in v1.1.2
     }
     
     /**
@@ -199,28 +194,7 @@ class Settings {
         // Appearance fields
         $this->add_color_fields();
         
-        // Targeting fields
-        add_settings_field(
-            'awm_roles',
-            __('Restrict to User Roles', 'admin-welcome-message'),
-            [$this, 'render_roles_field'],
-            'admin-welcome-message',
-            'awm_targeting_section',
-            ['field' => 'roles', 'description' => __('Select roles that should see the modal. Leave empty for all roles.', 'admin-welcome-message')]
-        );
-        
-        add_settings_field(
-            'awm_screens',
-            __('Restrict to Admin Screens', 'admin-welcome-message'),
-            [$this, 'render_textarea_field'],
-            'admin-welcome-message',
-            'awm_targeting_section',
-            [
-                'field' => 'screens',
-                'description' => __('Enter admin screen IDs or partials, one per line. Examples: dashboard, post, edit-post, upload, tools_page, /upload.php. Leave empty to allow all screens. Tip: current screen ID is shown in the admin bar.', 'admin-welcome-message'),
-                'placeholder' => "dashboard\npost\nedit-post\nupload\n/upload.php"
-            ]
-        );
+        // Targeting removed in v1.1.2
     }
     
     /**
@@ -284,9 +258,7 @@ class Settings {
                 <a href="#appearance-tab" class="nav-tab" data-tab="appearance">
                     <?php _e('Appearance', 'admin-welcome-message'); ?>
                 </a>
-                <a href="#targeting-tab" class="nav-tab" data-tab="targeting">
-                    <?php _e('Targeting', 'admin-welcome-message'); ?>
-                </a>
+                
                 <a href="#about-tab" class="nav-tab" data-tab="about">
                     <?php _e('About', 'admin-welcome-message'); ?>
                 </a>
@@ -320,11 +292,7 @@ class Settings {
                 </div>
                 
                 <!-- Targeting Tab -->
-                <div id="targeting-tab" class="awm-tab-content" role="tabpanel">
-                    <h2><?php _e('Targeting Settings', 'admin-welcome-message'); ?></h2>
-                    <p><?php _e('Control which users and admin screens should display the modal.', 'admin-welcome-message'); ?></p>
-                    <?php do_settings_sections('admin-welcome-message'); ?>
-                </div>
+                
                 
                 <!-- About Tab -->
                 <div id="about-tab" class="awm-tab-content" role="tabpanel">
