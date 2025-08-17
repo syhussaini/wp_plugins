@@ -215,13 +215,15 @@ class Settings {
         ];
         
         foreach ($color_fields as $field => $label) {
+            // translators: %s: human-readable color label (e.g., "Header Background")
+            $description = sprintf( __('Color for %s.', 'admin-welcome-message'), strtolower($label) );
             add_settings_field(
                 'awm_color_' . $field,
                 $label,
                 [$this, 'render_color_field'],
                 'admin-welcome-message-appearance',
                 'awm_appearance_section',
-                ['field' => 'colors.' . $field, 'description' => sprintf(__('Color for %s.', 'admin-welcome-message'), strtolower($label))]
+                ['field' => 'colors.' . $field, 'description' => $description]
             );
         }
     }
@@ -564,24 +566,15 @@ class Settings {
      * Render section descriptions
      */
     public function render_content_section() {
-        echo '<p>' . esc_html__('Configure the content and appearance of your admin welcome modal.', 'admin-welcome-message-targeting') . '</p>';
+        echo '<p>' . esc_html__('Configure the content and appearance of your admin welcome modal.', 'admin-welcome-message') . '</p>';
     }
     
     public function render_behavior_section() {
-        echo '<p>' . esc_html__('Control how the modal behaves when users interact with it.', 'admin-welcome-message-targeting') . '</p>';
+        echo '<p>' . esc_html__('Control how the modal behaves when users interact with it.', 'admin-welcome-message') . '</p>';
     }
     
     public function render_appearance_section() {
-        echo '<p>' . esc_html__('Customize the colors and visual appearance of your modal.', 'admin-welcome-message-targeting') . '</p>';
-    }
-    
-    public function render_targeting_section() {
-        echo '<p>' . esc_html__('Control which users and admin screens should display the modal.', 'admin-welcome-message-targeting') . '</p>';
-    }
-    
-    public function render_preview_section() {
-        echo '<p>' . esc_html__('Preview your modal with current settings (changes are not saved until you click Save Changes).', 'admin-welcome-message-targeting') . '</p>';
-        echo '<div id="awm-preview-container"></div>';
+        echo '<p>' . esc_html__('Customize the colors and visual appearance of your modal.', 'admin-welcome-message') . '</p>';
     }
     
     /**
