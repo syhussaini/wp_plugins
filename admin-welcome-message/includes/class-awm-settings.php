@@ -208,8 +208,8 @@ class Settings {
             'awm_targeting_section',
             [
                 'field' => 'screens',
-                'description' => __('Enter screen IDs (one per line) to restrict modal display. Leave empty for all screens.', 'admin-welcome-message'),
-                'placeholder' => 'dashboard\npost\nedit-post\npage\nedit-page'
+                'description' => __('Enter admin screen IDs or partials, one per line. Examples: dashboard, post, edit-post, upload, tools_page, /upload.php. Leave empty to allow all screens.', 'admin-welcome-message'),
+                'placeholder' => "dashboard\npost\nedit-post\nupload\n/upload.php"
             ]
         );
     }

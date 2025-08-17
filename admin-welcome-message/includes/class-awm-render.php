@@ -87,8 +87,26 @@ class Render {
         if (!empty($options['screens'])) {
             $current_screen = get_current_screen();
             if ($current_screen) {
-                $allowed_screens = array_filter(array_map('trim', explode("\n", $options['screens'])));
-                if (!in_array($current_screen->id, $allowed_screens)) {
+                $raw = array_filter(array_map('trim', explode("\n", $options['screens'])));
+                // Allow both exact screen IDs and partial/filename patterns
+                $allowed_screens = array_map('strtolower', $raw);
+                $screen_id = strtolower($current_screen->id);
+                $base_match = false;
+                foreach ($allowed_screens as $pattern) {
+                    if ($pattern === '') continue;
+                    // Normalize common entries like /upload.php to 'upload'
+                    $normalized = $pattern;
+                    if (strpos($normalized, '.php') !== false) {
+                        $normalized = basename($normalized, '.php');
+                    }
+                    $normalized = trim($normalized, "/ ");
+                    $normalized = strtolower($normalized);
+                    if ($normalized !== '' && (strpos($screen_id, $normalized) !== false || $screen_id === $normalized)) {
+                        $base_match = true;
+                        break;
+                    }
+                }
+                if (!$base_match) {
                     return false;
                 }
             }
