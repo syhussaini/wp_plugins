@@ -104,34 +104,24 @@
      * Close modal and handle session logic
      */
     function closeModal() {
-        if (checkbox && checkbox.checked) {
-            // User checked "don't show again"
-            if (options.dismiss_mode === 'session') {
-                // For session mode: hide until logout/tab closed
-                sessionStorage.setItem(STORAGE_KEYS.DISMISSED, 'true');
-                // Clear any cooldown timer
-                sessionStorage.removeItem(STORAGE_KEYS.NEXT_SHOW_TIME);
-            } else if (options.dismiss_mode === 'cooldown') {
-                // For cooldown mode: set next show time
-                const cooldownMs = (options.cooldown_minutes || 15) * 60 * 1000;
-                const nextTime = Date.now() + cooldownMs;
-                sessionStorage.setItem(STORAGE_KEYS.NEXT_SHOW_TIME, nextTime.toString());
-                // Clear dismissed flag
-                sessionStorage.removeItem(STORAGE_KEYS.DISMISSED);
-            }
+        // Determine session hide intent
+        const wantSessionHide = (options.enable_session_hide === true) && checkbox && checkbox.checked;
+        if (wantSessionHide) {
+            sessionStorage.setItem(STORAGE_KEYS.DISMISSED, 'true');
+            sessionStorage.removeItem(STORAGE_KEYS.NEXT_SHOW_TIME);
         } else {
-            // User didn't check the box
-            if (options.dismiss_mode === 'cooldown') {
-                // Always set cooldown timer when modal is closed
-                const cooldownMs = (options.cooldown_minutes || 15) * 60 * 1000;
-                const nextTime = Date.now() + cooldownMs;
-                sessionStorage.setItem(STORAGE_KEYS.NEXT_SHOW_TIME, nextTime.toString());
-                // Clear dismissed flag
-                sessionStorage.removeItem(STORAGE_KEYS.DISMISSED);
-            }
-            // For session mode: don't set anything if checkbox not checked
+            sessionStorage.removeItem(STORAGE_KEYS.DISMISSED);
         }
-        
+
+        // Determine cooldown/always behavior
+        if (options.dismiss_mode === 'cooldown') {
+            const cooldownMs = (options.cooldown_minutes || 15) * 60 * 1000;
+            const nextTime = Date.now() + cooldownMs;
+            sessionStorage.setItem(STORAGE_KEYS.NEXT_SHOW_TIME, nextTime.toString());
+        } else if (options.dismiss_mode === 'always') {
+            sessionStorage.removeItem(STORAGE_KEYS.NEXT_SHOW_TIME);
+        }
+
         hideModal();
     }
     
@@ -166,8 +156,8 @@
             document.addEventListener('keydown', handleKeydown);
         }
         
-        // Click outside modal - always enabled for better UX
-        if (modalOverlay) {
+        // Click outside modal - controlled by setting
+        if (modalOverlay && options.close_on_overlay === true) {
             modalOverlay.addEventListener('click', handleOverlayClick);
         }
         

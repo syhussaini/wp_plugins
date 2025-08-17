@@ -121,10 +121,10 @@ class Settings {
             [
                 'field' => 'dismiss_mode',
                 'options' => [
-                    'session' => __('Per Session (until logout/tab closed)', 'admin-welcome-message'),
-                    'cooldown' => __('Cooldown Minutes', 'admin-welcome-message')
+                    'cooldown' => __('Cooldown Minutes', 'admin-welcome-message'),
+                    'always' => __('Open on every reload', 'admin-welcome-message')
                 ],
-                'description' => __('How the modal should behave when dismissed.', 'admin-welcome-message')
+                'description' => __('Choose how the modal reappears after close.', 'admin-welcome-message')
             ]
         );
         
@@ -158,6 +158,24 @@ class Settings {
             'admin-welcome-message-behavior',
             'awm_behavior_section',
             ['field' => 'close_on_cta', 'description' => __('Close the modal when CTA button is clicked.', 'admin-welcome-message')]
+        );
+
+        add_settings_field(
+            'awm_close_on_overlay',
+            __('Close on overlay click', 'admin-welcome-message'),
+            [$this, 'render_checkbox_field'],
+            'admin-welcome-message-behavior',
+            'awm_behavior_section',
+            ['field' => 'close_on_overlay', 'description' => __('Allow closing the modal when clicking outside the modal.', 'admin-welcome-message')]
+        );
+
+        add_settings_field(
+            'awm_enable_session_hide',
+            __('Per Session (until logout/tab closed)', 'admin-welcome-message'),
+            [$this, 'render_checkbox_field'],
+            'admin-welcome-message-behavior',
+            'awm_behavior_section',
+            ['field' => 'enable_session_hide', 'description' => __('If checked and the footer checkbox is ticked, the modal will stay hidden until the session ends.', 'admin-welcome-message')]
         );
         
         add_settings_field(
@@ -580,7 +598,7 @@ class Settings {
         }
         
         // Dismiss mode
-        if (isset($input['dismiss_mode']) && in_array($input['dismiss_mode'], ['session', 'cooldown'])) {
+        if (isset($input['dismiss_mode']) && in_array($input['dismiss_mode'], ['always', 'cooldown'])) {
             $sanitized['dismiss_mode'] = $input['dismiss_mode'];
         }
         
@@ -592,7 +610,7 @@ class Settings {
         }
         
         // Checkbox fields
-        $checkbox_fields = ['cta_new_tab', 'close_on_esc', 'close_on_cta'];
+        $checkbox_fields = ['cta_new_tab', 'close_on_esc', 'close_on_cta', 'close_on_overlay', 'enable_session_hide'];
         foreach ($checkbox_fields as $field) {
             $sanitized[$field] = isset($input[$field]) ? true : false;
         }
