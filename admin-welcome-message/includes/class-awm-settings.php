@@ -391,6 +391,55 @@ class Settings {
             </form>
         </div>
         <?php
+        // Ensure tabs work even if external JS fails to load for any reason
+        $this->output_inline_tabs_script();
+    }
+
+    /**
+     * Output minimal inline JS to ensure tabs work even if external JS fails
+     */
+    private function output_inline_tabs_script() {
+        ?>
+        <script>
+        (function(){
+            function activateTab(key){
+                var links=document.querySelectorAll('.nav-tab');
+                var contents=document.querySelectorAll('.awm-tab-content');
+                links.forEach(function(l){l.classList.remove('nav-tab-active');});
+                contents.forEach(function(c){c.classList.remove('active');});
+                var link=document.querySelector('.nav-tab[data-tab="'+key+'"]');
+                var content=document.getElementById(key+'-tab');
+                if(link){link.classList.add('nav-tab-active');}
+                if(content){content.classList.add('active');}
+            }
+            document.addEventListener('DOMContentLoaded',function(){
+                var links=document.querySelectorAll('.nav-tab');
+                links.forEach(function(l){
+                    l.addEventListener('click',function(e){
+                        e.preventDefault();
+                        var key=this.getAttribute('data-tab');
+                        activateTab(key);
+                        if(window.history && window.history.replaceState){
+                            window.history.replaceState(null,'','#'+key+'-tab');
+                        } else {
+                            window.location.hash='#'+key+'-tab';
+                        }
+                    });
+                });
+                if(window.location.hash && window.location.hash.slice(-4)==='-tab'){
+                    var k=window.location.hash.replace('#','').replace('-tab','');
+                    activateTab(k);
+                } else {
+                    var active=document.querySelector('.awm-tab-content.active');
+                    if(!active){
+                        var first=document.querySelector('.awm-tab-content');
+                        if(first){ activateTab(first.id.replace('-tab','')); }
+                    }
+                }
+            });
+        })();
+        </script>
+        <?php
     }
     
     /**

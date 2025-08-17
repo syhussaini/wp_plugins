@@ -305,8 +305,9 @@
         // Initialize live preview button
         const previewBtn = document.getElementById('awm-live-preview-btn');
         if (previewBtn) {
-            previewBtn.addEventListener('click', function() {
-                // Show preview modal with current form values
+            previewBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
                 showPreviewModal();
             });
         }
