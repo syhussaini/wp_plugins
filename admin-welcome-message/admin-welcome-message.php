@@ -3,7 +3,7 @@
  * Plugin Name: Admin Welcome Message
  * Plugin URI: https://www.zaha.in
  * Description: A customizable admin modal that displays welcome messages with configurable content, styling, and session behavior.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Syed Hussaini
  * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('AWM_VERSION', '1.0.0');
+define('AWM_VERSION', '1.1.0');
 define('AWM_PLUGIN_FILE', __FILE__);
 define('AWM_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('AWM_PLUGIN_URL', plugin_dir_url(__FILE__));

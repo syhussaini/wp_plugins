@@ -34,30 +34,30 @@ class Settings {
     private function add_settings_sections() {
         add_settings_section(
             'awm_content_section',
-            __('Content Settings', 'admin-welcome-message-targeting'),
+            __('Content Settings', 'admin-welcome-message'),
             [$this, 'render_content_section'],
-            'admin-welcome-message-targeting'
+            'admin-welcome-message-content'
         );
         
         add_settings_section(
             'awm_behavior_section',
-            __('Behavior Settings', 'admin-welcome-message-targeting'),
+            __('Behavior Settings', 'admin-welcome-message'),
             [$this, 'render_behavior_section'],
-            'admin-welcome-message-targeting'
+            'admin-welcome-message-behavior'
         );
         
         add_settings_section(
             'awm_appearance_section',
-            __('Appearance Settings', 'admin-welcome-message-targeting'),
+            __('Appearance Settings', 'admin-welcome-message'),
             [$this, 'render_appearance_section'],
-            'admin-welcome-message-targeting'
+            'admin-welcome-message-appearance'
         );
         
         add_settings_section(
             'awm_targeting_section',
-            __('Targeting Settings', 'admin-welcome-message-targeting'),
+            __('Targeting Settings', 'admin-welcome-message'),
             [$this, 'render_targeting_section'],
-            'admin-welcome-message-targeting'
+            'admin-welcome-message'
         );
     }
     
@@ -68,105 +68,105 @@ class Settings {
         // Content fields
         add_settings_field(
             'awm_title',
-            __('Modal Title', 'admin-welcome-message-targeting'),
+            __('Modal Title', 'admin-welcome-message'),
             [$this, 'render_text_field'],
-            'admin-welcome-message-targeting',
+            'admin-welcome-message-content',
             'awm_content_section',
-            ['field' => 'title', 'description' => __('The title displayed in the modal header.', 'admin-welcome-message-targeting')]
+            ['field' => 'title', 'description' => __('The title displayed in the modal header.', 'admin-welcome-message')]
         );
         
         add_settings_field(
             'awm_message',
-            __('Modal Message', 'admin-welcome-message-targeting'),
+            __('Modal Message', 'admin-welcome-message'),
             [$this, 'render_editor_field'],
-            'admin-welcome-message-targeting',
+            'admin-welcome-message-content',
             'awm_content_section',
-            ['field' => 'message', 'description' => __('The main message content. HTML is allowed.', 'admin-welcome-message-targeting')]
+            ['field' => 'message', 'description' => __('The main message content. HTML is allowed.', 'admin-welcome-message')]
         );
         
         add_settings_field(
             'awm_cta_text',
-            __('CTA Button Text', 'admin-welcome-message-targeting'),
+            __('CTA Button Text', 'admin-welcome-message'),
             [$this, 'render_text_field'],
-            'admin-welcome-message-targeting',
+            'admin-welcome-message-content',
             'awm_content_section',
-            ['field' => 'cta_text', 'description' => __('Text for the call-to-action button.', 'admin-welcome-message-targeting')]
+            ['field' => 'cta_text', 'description' => __('Text for the call-to-action button.', 'admin-welcome-message')]
         );
         
         add_settings_field(
             'awm_cta_url',
-            __('CTA Button URL', 'admin-welcome-message-targeting'),
+            __('CTA Button URL', 'admin-welcome-message'),
             [$this, 'render_url_field'],
-            'admin-welcome-message-targeting',
+            'admin-welcome-message-content',
             'awm_content_section',
-            ['field' => 'cta_url', 'description' => __('URL for the call-to-action button.', 'admin-welcome-message-targeting')]
+            ['field' => 'cta_url', 'description' => __('URL for the call-to-action button.', 'admin-welcome-message')]
         );
         
         add_settings_field(
             'awm_footer_note',
-            __('Footer Note', 'admin-welcome-message-targeting'),
+            __('Footer Note', 'admin-welcome-message'),
             [$this, 'render_text_field'],
-            'admin-welcome-message-targeting',
+            'admin-welcome-message-content',
             'awm_content_section',
-            ['field' => 'footer_note', 'description' => __('Text for the footer checkbox.', 'admin-welcome-message-targeting')]
+            ['field' => 'footer_note', 'description' => __('Text for the footer checkbox.', 'admin-welcome-message')]
         );
         
         // Behavior fields
         add_settings_field(
             'awm_dismiss_mode',
-            __('Dismissal Mode', 'admin-welcome-message-targeting'),
+            __('Dismissal Mode', 'admin-welcome-message'),
             [$this, 'render_radio_field'],
-            'admin-welcome-message-targeting',
+            'admin-welcome-message-behavior',
             'awm_behavior_section',
             [
                 'field' => 'dismiss_mode',
                 'options' => [
-                    'session' => __('Per Session (until logout/tab closed)', 'admin-welcome-message-targeting'),
-                    'cooldown' => __('Cooldown Minutes', 'admin-welcome-message-targeting')
+                    'session' => __('Per Session (until logout/tab closed)', 'admin-welcome-message'),
+                    'cooldown' => __('Cooldown Minutes', 'admin-welcome-message')
                 ],
-                'description' => __('How the modal should behave when dismissed.', 'admin-welcome-message-targeting')
+                'description' => __('How the modal should behave when dismissed.', 'admin-welcome-message')
             ]
         );
         
         add_settings_field(
             'awm_cooldown_minutes',
-            __('Cooldown Minutes', 'admin-welcome-message-targeting'),
+            __('Cooldown Minutes', 'admin-welcome-message'),
             [$this, 'render_number_field'],
-            'admin-welcome-message-targeting',
+            'admin-welcome-message-behavior',
             'awm_behavior_section',
             [
                 'field' => 'cooldown_minutes',
                 'min' => 1,
                 'max' => 1440,
-                'description' => __('Minutes to wait before showing the modal again (1-1440).', 'admin-welcome-message-targeting')
+                'description' => __('Minutes to wait before showing the modal again (1-1440).', 'admin-welcome-message')
             ]
         );
         
         add_settings_field(
             'awm_close_on_esc',
-            __('Close on ESC Key', 'admin-welcome-message-targeting'),
+            __('Close on ESC Key', 'admin-welcome-message'),
             [$this, 'render_checkbox_field'],
-            'admin-welcome-message-targeting',
+            'admin-welcome-message-behavior',
             'awm_behavior_section',
-            ['field' => 'close_on_esc', 'description' => __('Allow closing the modal with the ESC key.', 'admin-welcome-message-targeting')]
+            ['field' => 'close_on_esc', 'description' => __('Allow closing the modal with the ESC key.', 'admin-welcome-message')]
         );
         
         add_settings_field(
             'awm_close_on_cta',
-            __('Close on CTA Click', 'admin-welcome-message-targeting'),
+            __('Close on CTA Click', 'admin-welcome-message'),
             [$this, 'render_checkbox_field'],
-            'admin-welcome-message-targeting',
+            'admin-welcome-message-behavior',
             'awm_behavior_section',
-            ['field' => 'close_on_cta', 'description' => __('Close the modal when CTA button is clicked.', 'admin-welcome-message-targeting')]
+            ['field' => 'close_on_cta', 'description' => __('Close the modal when CTA button is clicked.', 'admin-welcome-message')]
         );
         
         add_settings_field(
             'awm_cta_new_tab',
-            __('Open CTA in New Tab', 'admin-welcome-message-targeting'),
+            __('Open CTA in New Tab', 'admin-welcome-message'),
             [$this, 'render_checkbox_field'],
-            'admin-welcome-message-targeting',
+            'admin-welcome-message-behavior',
             'awm_behavior_section',
-            ['field' => 'cta_new_tab', 'description' => __('Open the CTA link in a new tab.', 'admin-welcome-message-targeting')]
+            ['field' => 'cta_new_tab', 'description' => __('Open the CTA link in a new tab.', 'admin-welcome-message')]
         );
         
         // Appearance fields
@@ -175,22 +175,22 @@ class Settings {
         // Targeting fields
         add_settings_field(
             'awm_roles',
-            __('Restrict to User Roles', 'admin-welcome-message-targeting'),
+            __('Restrict to User Roles', 'admin-welcome-message'),
             [$this, 'render_roles_field'],
-            'admin-welcome-message-targeting',
+            'admin-welcome-message',
             'awm_targeting_section',
-            ['field' => 'roles', 'description' => __('Select roles that should see the modal. Leave empty for all roles.', 'admin-welcome-message-targeting')]
+            ['field' => 'roles', 'description' => __('Select roles that should see the modal. Leave empty for all roles.', 'admin-welcome-message')]
         );
         
         add_settings_field(
             'awm_screens',
-            __('Restrict to Admin Screens', 'admin-welcome-message-targeting'),
+            __('Restrict to Admin Screens', 'admin-welcome-message'),
             [$this, 'render_textarea_field'],
-            'admin-welcome-message-targeting',
+            'admin-welcome-message',
             'awm_targeting_section',
             [
                 'field' => 'screens',
-                'description' => __('Enter screen IDs (one per line) to restrict modal display. Leave empty for all screens.', 'admin-welcome-message-targeting'),
+                'description' => __('Enter screen IDs (one per line) to restrict modal display. Leave empty for all screens.', 'admin-welcome-message'),
                 'placeholder' => 'dashboard\npost\nedit-post\npage\nedit-page'
             ]
         );
@@ -201,16 +201,16 @@ class Settings {
      */
     private function add_color_fields() {
         $color_fields = [
-            'header_bg' => __('Header Background', 'admin-welcome-message-targeting'),
-            'header_text' => __('Header Text', 'admin-welcome-message-targeting'),
-            'body_bg' => __('Body Background', 'admin-welcome-message-targeting'),
-            'body_text' => __('Body Text', 'admin-welcome-message-targeting'),
-            'footer_bg' => __('Footer Background', 'admin-welcome-message-targeting'),
-            'footer_text' => __('Footer Text', 'admin-welcome-message-targeting'),
-            'btn_bg' => __('Button Background', 'admin-welcome-message-targeting'),
-            'btn_text' => __('Button Text', 'admin-welcome-message-targeting'),
-            'btn_bg_hover' => __('Button Hover Background', 'admin-welcome-message-targeting'),
-            'btn_text_hover' => __('Button Hover Text', 'admin-welcome-message-targeting')
+            'header_bg' => __('Header Background', 'admin-welcome-message'),
+            'header_text' => __('Header Text', 'admin-welcome-message'),
+            'body_bg' => __('Body Background', 'admin-welcome-message'),
+            'body_text' => __('Body Text', 'admin-welcome-message'),
+            'footer_bg' => __('Footer Background', 'admin-welcome-message'),
+            'footer_text' => __('Footer Text', 'admin-welcome-message'),
+            'btn_bg' => __('Button Background', 'admin-welcome-message'),
+            'btn_text' => __('Button Text', 'admin-welcome-message'),
+            'btn_bg_hover' => __('Button Hover Background', 'admin-welcome-message'),
+            'btn_text_hover' => __('Button Hover Text', 'admin-welcome-message')
         ];
         
         foreach ($color_fields as $field => $label) {
@@ -218,9 +218,9 @@ class Settings {
                 'awm_color_' . $field,
                 $label,
                 [$this, 'render_color_field'],
-                'admin-welcome-message-targeting',
+                'admin-welcome-message-appearance',
                 'awm_appearance_section',
-                ['field' => 'colors.' . $field, 'description' => sprintf(__('Color for %s.', 'admin-welcome-message-targeting'), strtolower($label))]
+                ['field' => 'colors.' . $field, 'description' => sprintf(__('Color for %s.', 'admin-welcome-message'), strtolower($label))]
             );
         }
     }
