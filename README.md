@@ -18,14 +18,38 @@ A customizable admin modal that displays welcome messages with configurable cont
 
 ---
 
-## 📋 Installation
+## 📋 Repository Structure
 
-Each plugin can be installed independently:
+```
+wp_plugins/                          (this repository)
+├── README.md                        (this file - repository overview)
+├── .gitignore                       (repository configuration)
+├── admin-welcome-message/           (plugin folder)
+│   ├── admin-welcome-message.php    (main plugin file)
+│   ├── readme.txt                   (plugin documentation)
+│   ├── includes/                    (plugin classes)
+│   ├── assets/                      (CSS, JS, images)
+│   └── languages/                   (translation files)
+└── [future-plugin]/                 (additional plugins)
+    ├── [plugin-name].php
+    ├── readme.txt                   (plugin-specific documentation)
+    └── ...
+```
 
-1. Download the plugin folder from the releases page
-2. Upload to `/wp-content/plugins/` on your WordPress site
-3. Activate through the WordPress admin
-4. Configure settings as needed
+## 📖 How to Use
+
+### **For Users:**
+1. **Choose a plugin** from the list above
+2. **Click the plugin name** to go to its folder
+3. **Read the plugin's readme.txt** for installation instructions
+4. **Download from releases** or clone the repository
+
+### **For Developers:**
+- Each plugin folder contains its own complete documentation
+- Plugin readme.txt files follow WordPress.org standards
+- This README.md is for repository overview only
+
+---
 
 ## 🆘 Support
 
