@@ -258,6 +258,20 @@
         const tabLinks = document.querySelectorAll('.nav-tab');
         const tabContents = document.querySelectorAll('.awm-tab-content');
         
+        // Activate tab from URL hash if present
+        const hash = window.location.hash;
+        if (hash && hash.endsWith('-tab')) {
+            const tabKey = hash.replace('#', '').replace('-tab', '');
+            const targetContent = document.getElementById(tabKey + '-tab');
+            const targetLink = document.querySelector('.nav-tab[data-tab="' + tabKey + '"]');
+            if (targetContent && targetLink) {
+                tabLinks.forEach(tab => tab.classList.remove('nav-tab-active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                targetContent.classList.add('active');
+                targetLink.classList.add('nav-tab-active');
+            }
+        }
+
         tabLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -274,6 +288,8 @@
                 const targetContent = document.getElementById(targetTab + '-tab');
                 if (targetContent) {
                     targetContent.classList.add('active');
+                    // Update URL hash for deep linking
+                    history.replaceState(null, '', '#' + targetTab + '-tab');
                 }
             });
         });
@@ -302,7 +318,7 @@
      */
     function showPreviewModal() {
         // Get current form values
-        const form = document.querySelector('form[method="post"]');
+        const form = document.querySelector('form[method="post"][action*="options.php"]');
         if (!form) return;
         
         const formData = new FormData(form);

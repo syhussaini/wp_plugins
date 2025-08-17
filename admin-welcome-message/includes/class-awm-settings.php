@@ -186,6 +186,15 @@ class Settings {
             'awm_behavior_section',
             ['field' => 'cta_new_tab', 'description' => __('Open the CTA link in a new tab.', 'admin-welcome-message')]
         );
+
+        add_settings_field(
+            'awm_show_cta',
+            __('Show CTA Button', 'admin-welcome-message'),
+            [$this, 'render_checkbox_field'],
+            'admin-welcome-message-behavior',
+            'awm_behavior_section',
+            ['field' => 'show_cta', 'description' => __('Display the CTA button in the modal.', 'admin-welcome-message')]
+        );
         
         // Appearance fields
         $this->add_color_fields();
@@ -610,7 +619,7 @@ class Settings {
         }
         
         // Checkbox fields
-        $checkbox_fields = ['cta_new_tab', 'close_on_esc', 'close_on_cta', 'close_on_overlay', 'enable_session_hide'];
+        $checkbox_fields = ['cta_new_tab', 'close_on_esc', 'close_on_cta', 'close_on_overlay', 'enable_session_hide', 'show_cta'];
         foreach ($checkbox_fields as $field) {
             $sanitized[$field] = isset($input[$field]) ? true : false;
         }

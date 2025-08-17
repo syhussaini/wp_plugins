@@ -70,6 +70,7 @@ if (!function_exists('awm_activate')) {
             'close_on_esc' => true,
             'close_on_cta' => true,
             'close_on_overlay' => false,
+            'show_cta' => true,
             'colors' => [
                 'header_bg' => '#00463b',
                 'header_text' => '#ffffff',
