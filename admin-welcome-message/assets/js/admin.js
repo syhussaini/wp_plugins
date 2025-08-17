@@ -25,6 +25,8 @@
         // Initialize settings UI even if modal is not present
         if (window.awmAdminData) {
             initColorPickers();
+        }
+        if (document.querySelector('.awm-tab-content')) {
             initSettingsTabs();
         }
 
@@ -275,6 +277,15 @@
                 }
             });
         });
+
+        // Ensure at least one tab is active (if markup lost active class)
+        const anyActive = Array.from(tabContents).some(el => el.classList.contains('active'));
+        if (!anyActive && tabContents.length > 0) {
+            tabContents[0].classList.add('active');
+            if (tabLinks.length > 0) {
+                tabLinks[0].classList.add('nav-tab-active');
+            }
+        }
         
         // Initialize live preview button
         const previewBtn = document.getElementById('awm-live-preview-btn');
