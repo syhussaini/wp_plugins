@@ -44,6 +44,7 @@
         // Initialize color pickers if on settings page
         if (window.awmAdminData) {
             initColorPickers();
+            initSettingsTabs();
         }
     }
     
@@ -151,11 +152,11 @@
         }
         
         // ESC key
-        if (options.close_on_esc !== false) {
+        if (options.close_on_esc === true) {
             document.addEventListener('keydown', handleKeydown);
         }
         
-        // Click outside modal
+        // Click outside modal - always enabled for better UX
         if (modalOverlay) {
             modalOverlay.addEventListener('click', handleOverlayClick);
         }
@@ -246,6 +247,164 @@
         if (typeof $.fn.wpColorPicker !== 'undefined') {
             $('.awm-color-picker').wpColorPicker();
         }
+    }
+    
+    /**
+     * Initialize settings page tabs
+     */
+    function initSettingsTabs() {
+        const tabLinks = document.querySelectorAll('.nav-tab');
+        const tabContents = document.querySelectorAll('.awm-tab-content');
+        
+        tabLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all tabs and contents
+                tabLinks.forEach(tab => tab.classList.remove('nav-tab-active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('nav-tab-active');
+                
+                // Show corresponding content
+                const targetTab = this.getAttribute('data-tab');
+                const targetContent = document.getElementById(targetTab + '-tab');
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+            });
+        });
+        
+        // Initialize live preview button
+        const previewBtn = document.getElementById('awm-live-preview-btn');
+        if (previewBtn) {
+            previewBtn.addEventListener('click', function() {
+                // Show preview modal with current form values
+                showPreviewModal();
+            });
+        }
+    }
+    
+    /**
+     * Show preview modal with current settings
+     */
+    function showPreviewModal() {
+        // Get current form values
+        const form = document.querySelector('form[method="post"]');
+        if (!form) return;
+        
+        const formData = new FormData(form);
+        const options = {};
+        
+        // Parse form data to build options object
+        for (let [key, value] of formData.entries()) {
+            if (key.startsWith('awm_options[')) {
+                const cleanKey = key.replace('awm_options[', '').replace(']', '');
+                if (cleanKey.includes('[')) {
+                    // Handle nested arrays like colors[header_bg]
+                    const [parent, child] = cleanKey.split('[');
+                    const childKey = child.replace(']', '');
+                    if (!options[parent]) options[parent] = {};
+                    options[parent][childKey] = value;
+                } else {
+                    options[cleanKey] = value;
+                }
+            }
+        }
+        
+        // Create preview modal
+        createPreviewModal(options);
+    }
+    
+    /**
+     * Create and show preview modal
+     */
+    function createPreviewModal(options) {
+        // Remove existing preview modal
+        const existingPreview = document.getElementById('awm-preview-modal');
+        if (existingPreview) {
+            existingPreview.remove();
+        }
+        
+        // Create preview modal HTML
+        const previewHTML = `
+            <div id="awm-preview-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 999999; display: flex; align-items: center; justify-content: center;">
+                <div style="background: white; padding: 20px; border-radius: 8px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto;">
+                    <h2 style="margin-top: 0;">Live Preview</h2>
+                    <div id="awm-preview-content"></div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button type="button" onclick="document.getElementById('awm-preview-modal').remove()" class="button button-primary">
+                            Close Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.insertAdjacentHTML('beforeend', previewHTML);
+        
+        // Render preview content
+        renderPreviewContent(options);
+    }
+    
+    /**
+     * Render preview content
+     */
+    function renderPreviewContent(options) {
+        const previewContent = document.getElementById('awm-preview-content');
+        if (!previewContent) return;
+        
+        // Build CSS variables for colors
+        const colors = options.colors || {};
+        const cssVars = [];
+        
+        const colorMappings = {
+            'header_bg': '--awm-header-bg',
+            'header_text': '--awm-header-color',
+            'body_bg': '--awm-body-bg',
+            'body_text': '--awm-body-color',
+            'footer_bg': '--awm-footer-bg',
+            'footer_text': '--awm-footer-color',
+            'btn_bg': '--awm-btn-bg',
+            'btn_text': '--awm-btn-color',
+            'btn_bg_hover': '--awm-btn-bg-hover',
+            'btn_text_hover': '--awm-btn-color-hover'
+        };
+        
+        for (const [optionKey, cssVar] of Object.entries(colorMappings)) {
+            if (colors[optionKey]) {
+                cssVars.push(`${cssVar}: ${colors[optionKey]};`);
+            }
+        }
+        
+        const cssVarsString = cssVars.join(' ');
+        
+        // Create preview modal HTML
+        const previewModalHTML = `
+            <div id="awm-admin-modal" style="${cssVarsString}">
+                <div id="awm-admin-modal-header">
+                    ${options.title || 'Welcome'}
+                </div>
+                <div id="awm-admin-modal-content">
+                    ${options.message || '<p>Your message will appear here.</p>'}
+                </div>
+                <div id="awm-admin-modal-buttons">
+                    <a href="${options.cta_url || '#'}" class="awm-modal-btn" style="text-decoration: none;">
+                        ${options.cta_text || 'Access Help'}
+                    </a>
+                    <button class="awm-modal-btn">Close</button>
+                </div>
+                <div id="awm-admin-modal-footer">
+                    <input type="checkbox" id="awm-hide-session-checkbox">
+                    <label for="awm-hide-session-checkbox">
+                        ${options.footer_note || "Don't show this again during my current session"}
+                    </label>
+                </div>
+            </div>
+        `;
+        
+        previewContent.innerHTML = previewModalHTML;
     }
     
     /**

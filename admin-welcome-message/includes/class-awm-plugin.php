@@ -74,6 +74,7 @@ class Plugin {
         }
         
         wp_enqueue_style('wp-color-picker');
+        wp_enqueue_style('dashicons');
         wp_enqueue_script('wp-color-picker');
         
         wp_enqueue_style(
