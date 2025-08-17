@@ -10,9 +10,8 @@
  * Text Domain: admin-welcome-message
  * Domain Path: /languages
  * Requires at least: 5.8
- * Tested up to: 6.4
+ * Tested up to: 6.8
  * Requires PHP: 7.4
- * Network: false
  *
  * @package AdminWelcomeMessage
  */
@@ -29,13 +28,7 @@ define('AWM_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('AWM_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('AWM_PLUGIN_BASENAME', plugin_basename(__FILE__));
 
-// Load text domain (guard against re-declaration if an older copy is present)
-if (!function_exists('awm_load_textdomain')) {
-    function awm_load_textdomain() {
-        load_plugin_textdomain('admin-welcome-message', false, dirname(AWM_PLUGIN_BASENAME) . '/languages');
-    }
-}
-add_action('plugins_loaded', 'awm_load_textdomain');
+// Rely on WordPress.org language packs for translations (no manual load in WP 4.6+)
 
 // Include required files
 require_once AWM_PLUGIN_DIR . 'includes/class-awm-plugin.php';
