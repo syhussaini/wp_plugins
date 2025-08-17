@@ -1,0 +1,246 @@
+/**
+ * Admin Welcome Modal Styles
+ */
+
+/* Modal Overlay */
+#awm-admin-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+/* Modal Container */
+#awm-admin-modal {
+    background: var(--awm-body-bg, #ffffff);
+    border-radius: 8px;
+    max-width: 520px;
+    width: 90%;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    animation: awm-modal-fade-in 0.3s ease-out;
+}
+
+/* Modal Header */
+#awm-admin-modal-header {
+    background: var(--awm-header-bg, #00463b);
+    color: var(--awm-header-color, #ffffff);
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* Modal Content */
+#awm-admin-modal-content {
+    padding: 24px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--awm-body-color, #111111);
+    overflow-y: auto;
+    flex: 1;
+}
+
+#awm-admin-modal-content h1,
+#awm-admin-modal-content h2,
+#awm-admin-modal-content h3,
+#awm-admin-modal-content h4,
+#awm-admin-modal-content h5,
+#awm-admin-modal-content h6 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: var(--awm-body-color, #111111);
+    font-weight: 600;
+}
+
+#awm-admin-modal-content h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+#awm-admin-modal-content p {
+    margin-bottom: 16px;
+}
+
+#awm-admin-modal-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Modal Buttons */
+#awm-admin-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px 24px;
+    flex-wrap: wrap;
+}
+
+.awm-modal-btn {
+    background: var(--awm-btn-bg, #00463b);
+    color: var(--awm-btn-color, #ffffff) !important;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s ease;
+    line-height: 1.4;
+    min-width: 120px;
+    text-align: center;
+}
+
+.awm-modal-btn:hover {
+    background: var(--awm-btn-bg-hover, #006b57);
+    color: var(--awm-btn-color-hover, #ffffff) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.awm-modal-btn:focus {
+    outline: 2px solid var(--awm-btn-bg, #00463b);
+    outline-offset: 2px;
+}
+
+/* Modal Footer */
+#awm-admin-modal-footer {
+    background: var(--awm-footer-bg, #0E281D);
+    color: var(--awm-footer-color, #ffffff);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#awm-admin-modal-footer input[type="checkbox"] {
+    margin-right: 8px;
+    margin-bottom: 0;
+}
+
+#awm-admin-modal-footer label {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #awm-admin-modal {
+        width: 95%;
+        max-width: none;
+        margin: 20px;
+    }
+    
+    #awm-admin-modal-header {
+        padding: 16px;
+        font-size: 16px;
+    }
+    
+    #awm-admin-modal-content {
+        padding: 20px;
+        font-size: 15px;
+    }
+    
+    #awm-admin-modal-buttons {
+        padding: 16px 20px;
+        gap: 8px;
+    }
+    
+    .awm-modal-btn {
+        padding: 10px 16px;
+        font-size: 15px;
+        min-width: 100px;
+    }
+    
+    #awm-admin-modal-footer {
+        padding: 12px 20px;
+    }
+    
+    #awm-admin-modal-footer label {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    #awm-admin-modal {
+        width: 98%;
+        margin: 10px;
+    }
+    
+    #awm-admin-modal-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .awm-modal-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* Animation */
+@keyframes awm-modal-fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Focus Management */
+#awm-admin-modal:focus {
+    outline: none;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    #awm-admin-modal {
+        border: 2px solid #000000;
+    }
+    
+    .awm-modal-btn {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    #awm-admin-modal {
+        animation: none;
+    }
+    
+    .awm-modal-btn {
+        transition: none;
+    }
+    
+    .awm-modal-btn:hover {
+        transform: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    #awm-admin-modal-overlay {
+        display: none !important;
+    }
+}
