@@ -22,7 +22,13 @@
      * Initialize modal functionality
      */
     function init() {
-        // Get DOM elements
+        // Initialize settings UI even if modal is not present
+        if (window.awmAdminData) {
+            initColorPickers();
+            initSettingsTabs();
+        }
+
+        // Get DOM elements for modal
         modalOverlay = document.getElementById('awm-admin-modal-overlay');
         modalContainer = document.getElementById('awm-admin-modal');
         checkbox = document.getElementById('awm-hide-session-checkbox');
@@ -40,12 +46,6 @@
         
         // Bind events
         bindEvents();
-        
-        // Initialize color pickers if on settings page
-        if (window.awmAdminData) {
-            initColorPickers();
-            initSettingsTabs();
-        }
     }
     
     /**

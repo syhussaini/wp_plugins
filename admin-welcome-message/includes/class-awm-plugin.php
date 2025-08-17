@@ -34,7 +34,14 @@ class Plugin {
         add_action('admin_menu', [$this, 'add_admin_menu']);
         add_action('admin_init', [$this, 'init_settings']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
+        add_action('current_screen', [$this, 'capture_screen']);
         add_action('admin_bar_menu', [$this, 'add_adminbar_screen_id'], 1000);
+    }
+    /** @var \WP_Screen|null */
+    private $current_screen = null;
+
+    public function capture_screen($screen) {
+        $this->current_screen = $screen;
     }
     
     /**
@@ -113,7 +120,7 @@ class Plugin {
         if (!is_admin()) {
             return;
         }
-        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+        $screen = $this->current_screen ?: (function_exists('get_current_screen') ? get_current_screen() : null);
         $id = $screen && isset($screen->id) ? $screen->id : __('unknown', 'admin-welcome-message');
         $wp_admin_bar->add_node([
             'id' => 'awm-screen-id',
