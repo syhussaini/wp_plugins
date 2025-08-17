@@ -22,10 +22,8 @@
      * Initialize modal functionality
      */
     function init() {
-        // Initialize settings UI even if modal is not present
-        if (window.awmAdminData) {
-            initColorPickers();
-        }
+        // Initialize color pickers on settings page if present
+        initColorPickers();
         // Always try to initialize tabs on settings page
         initSettingsTabs();
 
@@ -287,8 +285,16 @@
                 const targetContent = document.getElementById(targetTab + '-tab');
                 if (targetContent) {
                     targetContent.classList.add('active');
+                    // Re-init color pickers when switching to appearance
+                    if (targetTab === 'appearance') {
+                        initColorPickers();
+                    }
                     // Update URL hash for deep linking
-                    history.replaceState(null, '', '#' + targetTab + '-tab');
+                    if (history && history.replaceState) {
+                        history.replaceState(null, '', '#' + targetTab + '-tab');
+                    } else {
+                        window.location.hash = '#' + targetTab + '-tab';
+                    }
                 }
             });
         });
