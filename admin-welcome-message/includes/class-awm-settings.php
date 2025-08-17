@@ -242,29 +242,29 @@ class Settings {
             <div class="awm-preview-button-container" style="margin: 20px 0;">
                 <button type="button" id="awm-live-preview-btn" class="button button-primary button-large">
                     <span class="dashicons dashicons-visibility" style="margin-right: 5px;"></span>
-                    <?php _e('Live Preview', 'admin-welcome-message-targeting'); ?>
+                    <?php _e('Live Preview', 'admin-welcome-message'); ?>
                 </button>
             </div>
             
             <!-- Tab Navigation -->
             <nav class="nav-tab-wrapper wp-clearfix">
                 <a href="#content-tab" class="nav-tab nav-tab-active" data-tab="content">
-                    <?php _e('Content', 'admin-welcome-message-targeting'); ?>
+                    <?php _e('Content', 'admin-welcome-message'); ?>
                 </a>
                 <a href="#behavior-tab" class="nav-tab" data-tab="behavior">
-                    <?php _e('Behavior', 'admin-welcome-message-targeting'); ?>
+                    <?php _e('Behavior', 'admin-welcome-message'); ?>
                 </a>
                 <a href="#appearance-tab" class="nav-tab" data-tab="appearance">
-                    <?php _e('Appearance', 'admin-welcome-message-targeting'); ?>
+                    <?php _e('Appearance', 'admin-welcome-message'); ?>
                 </a>
                 <a href="#targeting-tab" class="nav-tab" data-tab="targeting">
-                    <?php _e('Targeting', 'admin-welcome-message-targeting'); ?>
+                    <?php _e('Targeting', 'admin-welcome-message'); ?>
                 </a>
                 <a href="#about-tab" class="nav-tab" data-tab="about">
-                    <?php _e('About', 'admin-welcome-message-targeting'); ?>
+                    <?php _e('About', 'admin-welcome-message'); ?>
                 </a>
                 <a href="#help-tab" class="nav-tab" data-tab="help">
-                    <?php _e('Help', 'admin-welcome-message-targeting'); ?>
+                    <?php _e('Help', 'admin-welcome-message'); ?>
                 </a>
             </nav>
             
@@ -273,87 +273,87 @@ class Settings {
                 
                 <!-- Content Tab -->
                 <div id="content-tab" class="awm-tab-content active">
-                    <h2><?php _e('Content Settings', 'admin-welcome-message-targeting'); ?></h2>
-                    <p><?php _e('Configure the content and appearance of your admin welcome modal.', 'admin-welcome-message-targeting'); ?></p>
-                    <?php do_settings_sections('admin-welcome-message-targeting'); ?>
+                    <h2><?php _e('Content Settings', 'admin-welcome-message'); ?></h2>
+                    <p><?php _e('Configure the content and appearance of your admin welcome modal.', 'admin-welcome-message'); ?></p>
+                    <?php do_settings_sections('admin-welcome-message-content'); ?>
                 </div>
                 
                 <!-- Behavior Tab -->
                 <div id="behavior-tab" class="awm-tab-content">
-                    <h2><?php _e('Behavior Settings', 'admin-welcome-message-targeting'); ?></h2>
-                    <p><?php _e('Control how the modal behaves when users interact with it.', 'admin-welcome-message-targeting'); ?></p>
-                    <?php do_settings_sections('admin-welcome-message-targeting'); ?>
+                    <h2><?php _e('Behavior Settings', 'admin-welcome-message'); ?></h2>
+                    <p><?php _e('Control how the modal behaves when users interact with it.', 'admin-welcome-message'); ?></p>
+                    <?php do_settings_sections('admin-welcome-message-behavior'); ?>
                 </div>
                 
                 <!-- Appearance Tab -->
                 <div id="appearance-tab" class="awm-tab-content">
-                    <h2><?php _e('Appearance Settings', 'admin-welcome-message-targeting'); ?></h2>
-                    <p><?php _e('Customize the colors and visual appearance of your modal.', 'admin-welcome-message-targeting'); ?></p>
-                    <?php do_settings_sections('admin-welcome-message-targeting'); ?>
+                    <h2><?php _e('Appearance Settings', 'admin-welcome-message'); ?></h2>
+                    <p><?php _e('Customize the colors and visual appearance of your modal.', 'admin-welcome-message'); ?></p>
+                    <?php do_settings_sections('admin-welcome-message-appearance'); ?>
                 </div>
                 
                 <!-- Targeting Tab -->
                 <div id="targeting-tab" class="awm-tab-content">
-                    <h2><?php _e('Targeting Settings', 'admin-welcome-message-targeting'); ?></h2>
-                    <p><?php _e('Control which users and admin screens should display the modal.', 'admin-welcome-message-targeting'); ?></p>
-                    <?php do_settings_sections('admin-welcome-message-targeting'); ?>
+                    <h2><?php _e('Targeting Settings', 'admin-welcome-message'); ?></h2>
+                    <p><?php _e('Control which users and admin screens should display the modal.', 'admin-welcome-message'); ?></p>
+                    <?php do_settings_sections('admin-welcome-message'); ?>
                 </div>
                 
                 <!-- About Tab -->
                 <div id="about-tab" class="awm-tab-content">
-                    <h2><?php _e('About Admin Welcome Message', 'admin-welcome-message-targeting'); ?></h2>
+                    <h2><?php _e('About Admin Welcome Message', 'admin-welcome-message'); ?></h2>
                     <div class="awm-about-content">
-                        <h3><?php _e('Plugin Information', 'admin-welcome-message-targeting'); ?></h3>
-                        <p><strong><?php _e('Version:', 'admin-welcome-message-targeting'); ?></strong> <?php echo esc_html(AWM_VERSION); ?></p>
-                        <p><strong><?php _e('Author:', 'admin-welcome-message-targeting'); ?></strong> <a href="https://www.zaha.in" target="_blank">Syed Hussaini</a></p>
-                        <p><strong><?php _e('Website:', 'admin-welcome-message-targeting'); ?></strong> <a href="https://www.zaha.in" target="_blank">www.Zaha.in</a></p>
-                        <p><strong><?php _e('Support:', 'admin-welcome-message-targeting'); ?></strong> <a href="https://github.com/syhussaini/wp_plugins/issues" target="_blank">GitHub Issues</a></p>
+                        <h3><?php _e('Plugin Information', 'admin-welcome-message'); ?></h3>
+                        <p><strong><?php _e('Version:', 'admin-welcome-message'); ?></strong> <?php echo esc_html(AWM_VERSION); ?></p>
+                        <p><strong><?php _e('Author:', 'admin-welcome-message'); ?></strong> <a href="https://www.zaha.in" target="_blank">Syed Hussaini</a></p>
+                        <p><strong><?php _e('Website:', 'admin-welcome-message'); ?></strong> <a href="https://www.zaha.in" target="_blank">www.Zaha.in</a></p>
+                        <p><strong><?php _e('Support:', 'admin-welcome-message'); ?></strong> <a href="https://github.com/syhussaini/wp_plugins/issues" target="_blank">GitHub Issues</a></p>
                         
-                        <h3><?php _e('Description', 'admin-welcome-message-targeting'); ?></h3>
-                        <p><?php _e('Admin Welcome Message is a powerful WordPress plugin that allows site administrators to create and customize welcome modals for their admin area. Perfect for onboarding new users, displaying important announcements, or providing quick access to help resources.', 'admin-welcome-message-targeting'); ?></p>
+                        <h3><?php _e('Description', 'admin-welcome-message'); ?></h3>
+                        <p><?php _e('Admin Welcome Message is a powerful WordPress plugin that allows site administrators to create and customize welcome modals for their admin area. Perfect for onboarding new users, displaying important announcements, or providing quick access to help resources.', 'admin-welcome-message'); ?></p>
                         
-                        <h3><?php _e('Features', 'admin-welcome-message-targeting'); ?></h3>
+                        <h3><?php _e('Features', 'admin-welcome-message'); ?></h3>
                         <ul>
-                            <li><?php _e('Fully customizable content and appearance', 'admin-welcome-message-targeting'); ?></li>
-                            <li><?php _e('Role-based targeting and screen restrictions', 'admin-welcome-message-targeting'); ?></li>
-                            <li><?php _e('Flexible session management (per-session or cooldown)', 'admin-welcome-message-targeting'); ?></li>
-                            <li><?php _e('Responsive design with accessibility features', 'admin-welcome-message-targeting'); ?></li>
-                            <li><?php _e('Developer-friendly hooks and filters', 'admin-welcome-message-targeting'); ?></li>
+                            <li><?php _e('Fully customizable content and appearance', 'admin-welcome-message'); ?></li>
+                            <li><?php _e('Role-based targeting and screen restrictions', 'admin-welcome-message'); ?></li>
+                            <li><?php _e('Flexible session management (per-session or cooldown)', 'admin-welcome-message'); ?></li>
+                            <li><?php _e('Responsive design with accessibility features', 'admin-welcome-message'); ?></li>
+                            <li><?php _e('Developer-friendly hooks and filters', 'admin-welcome-message'); ?></li>
                         </ul>
                     </div>
                 </div>
                 
                 <!-- Help Tab -->
                 <div id="help-tab" class="awm-tab-content">
-                    <h2><?php _e('Help & Documentation', 'admin-welcome-message-targeting'); ?></h2>
+                    <h2><?php _e('Help & Documentation', 'admin-welcome-message'); ?></h2>
                     <div class="awm-help-content">
-                        <h3><?php _e('Quick Start Guide', 'admin-welcome-message-targeting'); ?></h3>
+                        <h3><?php _e('Quick Start Guide', 'admin-welcome-message'); ?></h3>
                         <ol>
-                            <li><?php _e('Configure your modal content in the Content tab', 'admin-welcome-message-targeting'); ?></li>
-                            <li><?php _e('Set behavior options in the Behavior tab', 'admin-welcome-message-targeting'); ?></li>
-                            <li><?php _e('Customize colors in the Appearance tab', 'admin-welcome-message-targeting'); ?></li>
-                            <li><?php _e('Set targeting rules in the Targeting tab', 'admin-welcome-message-targeting'); ?></li>
-                            <li><?php _e('Use the Live Preview button to see changes instantly', 'admin-welcome-message-targeting'); ?></li>
-                            <li><?php _e('Save your settings when satisfied', 'admin-welcome-message-targeting'); ?></li>
+                            <li><?php _e('Configure your modal content in the Content tab', 'admin-welcome-message'); ?></li>
+                            <li><?php _e('Set behavior options in the Behavior tab', 'admin-welcome-message'); ?></li>
+                            <li><?php _e('Customize colors in the Appearance tab', 'admin-welcome-message'); ?></li>
+                            <li><?php _e('Set targeting rules in the Targeting tab', 'admin-welcome-message'); ?></li>
+                            <li><?php _e('Use the Live Preview button to see changes instantly', 'admin-welcome-message'); ?></li>
+                            <li><?php _e('Save your settings when satisfied', 'admin-welcome-message'); ?></li>
                         </ol>
                         
-                        <h3><?php _e('Common Questions', 'admin-welcome-message-targeting'); ?></h3>
+                        <h3><?php _e('Common Questions', 'admin-welcome-message'); ?></h3>
                         <div class="awm-faq">
-                            <h4><?php _e('How do I restrict the modal to specific user roles?', 'admin-welcome-message-targeting'); ?></h4>
-                            <p><?php _e('Go to the Targeting tab and select the user roles that should see the modal. Leave empty to show to all users.', 'admin-welcome-message-targeting'); ?></p>
+                            <h4><?php _e('How do I restrict the modal to specific user roles?', 'admin-welcome-message'); ?></h4>
+                            <p><?php _e('Go to the Targeting tab and select the user roles that should see the modal. Leave empty to show to all users.', 'admin-welcome-message'); ?></p>
                             
-                            <h4><?php _e('Can I show the modal on specific admin screens only?', 'admin-welcome-message-targeting'); ?></h4>
-                            <p><?php _e('Yes! In the Targeting tab, enter screen IDs (one per line) to restrict where the modal appears.', 'admin-welcome-message-targeting'); ?></p>
+                            <h4><?php _e('Can I show the modal on specific admin screens only?', 'admin-welcome-message'); ?></h4>
+                            <p><?php _e('Yes! In the Targeting tab, enter screen IDs (one per line) to restrict where the modal appears.', 'admin-welcome-message'); ?></p>
                             
-                            <h4><?php _e('How does the session management work?', 'admin-welcome-message-targeting'); ?></h4>
-                            <p><?php _e('Choose between Per Session (hidden until logout) or Cooldown Minutes (reappears after specified time) in the Behavior tab.', 'admin-welcome-message-targeting'); ?></p>
+                            <h4><?php _e('How does the session management work?', 'admin-welcome-message'); ?></h4>
+                            <p><?php _e('Choose between Per Session (hidden until logout) or Cooldown Minutes (reappears after specified time) in the Behavior tab.', 'admin-welcome-message'); ?></p>
                         </div>
                         
-                        <h3><?php _e('Need More Help?', 'admin-welcome-message-targeting'); ?></h3>
-                        <p><?php _e('If you need additional support:', 'admin-welcome-message-targeting'); ?></p>
+                        <h3><?php _e('Need More Help?', 'admin-welcome-message'); ?></h3>
+                        <p><?php _e('If you need additional support:', 'admin-welcome-message'); ?></p>
                         <ul>
-                            <li><a href="https://github.com/syhussaini/wp_plugins/issues" target="_blank"><?php _e('Create a GitHub Issue', 'admin-welcome-message-targeting'); ?></a></li>
-                            <li><a href="https://www.zaha.in" target="_blank"><?php _e('Visit our website', 'admin-welcome-message-targeting'); ?></a></li>
+                            <li><a href="https://github.com/syhussaini/wp_plugins/issues" target="_blank"><?php _e('Create a GitHub Issue', 'admin-welcome-message'); ?></a></li>
+                            <li><a href="https://www.zaha.in" target="_blank"><?php _e('Visit our website', 'admin-welcome-message'); ?></a></li>
                         </ul>
                     </div>
                 </div>
