@@ -85,9 +85,9 @@ class Render {
         
         // Check screen restrictions
         if (!empty($options['screens'])) {
-            $current_screen = get_current_screen();
+            $current_screen = function_exists('get_current_screen') ? get_current_screen() : null;
             if ($current_screen) {
-                $raw = array_filter(array_map('trim', explode("\n", $options['screens'])));
+                $raw = array_filter(array_map('trim', preg_split('/\r\n|\r|\n/', $options['screens'])));
                 // Allow both exact screen IDs and partial/filename patterns
                 $allowed_screens = array_map('strtolower', $raw);
                 $screen_id = strtolower($current_screen->id);

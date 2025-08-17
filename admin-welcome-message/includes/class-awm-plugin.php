@@ -77,7 +77,8 @@ class Plugin {
      */
     public function enqueue_admin_scripts($hook) {
         // Enqueue on our settings page; be resilient to hook variations
-        $is_our_page = isset($_GET['page']) && $_GET['page'] === 'admin-welcome-message';
+        $is_our_page = (isset($_GET['page']) && $_GET['page'] === 'admin-welcome-message')
+            || (is_string($hook) && strpos($hook, 'admin-welcome-message') !== false);
         if (!$is_our_page) {
             return;
         }
