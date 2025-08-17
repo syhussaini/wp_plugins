@@ -34,6 +34,7 @@ class Plugin {
         add_action('admin_menu', [$this, 'add_admin_menu']);
         add_action('admin_init', [$this, 'init_settings']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
+        add_action('admin_bar_menu', [$this, 'add_adminbar_screen_id'], 1000);
     }
     
     /**
@@ -99,6 +100,25 @@ class Plugin {
                 'saved' => __('Settings saved successfully!', 'admin-welcome-message'),
                 'error' => __('Error saving settings.', 'admin-welcome-message')
             ]
+        ]);
+    }
+
+    /**
+     * Add current screen ID to admin bar for admins
+     */
+    public function add_adminbar_screen_id($wp_admin_bar) {
+        if (!current_user_can('manage_options')) {
+            return;
+        }
+        if (!is_admin()) {
+            return;
+        }
+        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+        $id = $screen && isset($screen->id) ? $screen->id : __('unknown', 'admin-welcome-message');
+        $wp_admin_bar->add_node([
+            'id' => 'awm-screen-id',
+            'title' => sprintf(__('Screen ID: %s', 'admin-welcome-message'), esc_html($id)),
+            'href' => false,
         ]);
     }
 }

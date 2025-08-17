@@ -208,7 +208,7 @@ class Settings {
             'awm_targeting_section',
             [
                 'field' => 'screens',
-                'description' => __('Enter admin screen IDs or partials, one per line. Examples: dashboard, post, edit-post, upload, tools_page, /upload.php. Leave empty to allow all screens.', 'admin-welcome-message'),
+                'description' => __('Enter admin screen IDs or partials, one per line. Examples: dashboard, post, edit-post, upload, tools_page, /upload.php. Leave empty to allow all screens. Tip: current screen ID is shown in the admin bar.', 'admin-welcome-message'),
                 'placeholder' => "dashboard\npost\nedit-post\nupload\n/upload.php"
             ]
         );
