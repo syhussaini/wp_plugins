@@ -274,7 +274,7 @@ class Settings {
             </div>
             
             <!-- Tab Navigation -->
-            <nav class="nav-tab-wrapper wp-clearfix">
+            <nav class="nav-tab-wrapper wp-clearfix" role="tablist">
                 <a href="#content-tab" class="nav-tab nav-tab-active" data-tab="content">
                     <?php _e('Content', 'admin-welcome-message'); ?>
                 </a>
@@ -299,35 +299,35 @@ class Settings {
                 <?php settings_fields('awm_options_group'); ?>
                 
                 <!-- Content Tab -->
-                <div id="content-tab" class="awm-tab-content active">
+                <div id="content-tab" class="awm-tab-content active" role="tabpanel">
                     <h2><?php _e('Content Settings', 'admin-welcome-message'); ?></h2>
                     <p><?php _e('Configure the content and appearance of your admin welcome modal.', 'admin-welcome-message'); ?></p>
                     <?php do_settings_sections('admin-welcome-message-content'); ?>
                 </div>
                 
                 <!-- Behavior Tab -->
-                <div id="behavior-tab" class="awm-tab-content">
+                <div id="behavior-tab" class="awm-tab-content" role="tabpanel">
                     <h2><?php _e('Behavior Settings', 'admin-welcome-message'); ?></h2>
                     <p><?php _e('Control how the modal behaves when users interact with it.', 'admin-welcome-message'); ?></p>
                     <?php do_settings_sections('admin-welcome-message-behavior'); ?>
                 </div>
                 
                 <!-- Appearance Tab -->
-                <div id="appearance-tab" class="awm-tab-content">
+                <div id="appearance-tab" class="awm-tab-content" role="tabpanel">
                     <h2><?php _e('Appearance Settings', 'admin-welcome-message'); ?></h2>
                     <p><?php _e('Customize the colors and visual appearance of your modal.', 'admin-welcome-message'); ?></p>
                     <?php do_settings_sections('admin-welcome-message-appearance'); ?>
                 </div>
                 
                 <!-- Targeting Tab -->
-                <div id="targeting-tab" class="awm-tab-content">
+                <div id="targeting-tab" class="awm-tab-content" role="tabpanel">
                     <h2><?php _e('Targeting Settings', 'admin-welcome-message'); ?></h2>
                     <p><?php _e('Control which users and admin screens should display the modal.', 'admin-welcome-message'); ?></p>
                     <?php do_settings_sections('admin-welcome-message'); ?>
                 </div>
                 
                 <!-- About Tab -->
-                <div id="about-tab" class="awm-tab-content">
+                <div id="about-tab" class="awm-tab-content" role="tabpanel">
                     <h2><?php _e('About Admin Welcome Message', 'admin-welcome-message'); ?></h2>
                     <div class="awm-about-content">
                         <h3><?php _e('Plugin Information', 'admin-welcome-message'); ?></h3>
@@ -351,7 +351,7 @@ class Settings {
                 </div>
                 
                 <!-- Help Tab -->
-                <div id="help-tab" class="awm-tab-content">
+                <div id="help-tab" class="awm-tab-content" role="tabpanel">
                     <h2><?php _e('Help & Documentation', 'admin-welcome-message'); ?></h2>
                     <div class="awm-help-content">
                         <h3><?php _e('Quick Start Guide', 'admin-welcome-message'); ?></h3>

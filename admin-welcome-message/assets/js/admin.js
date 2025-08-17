@@ -26,9 +26,8 @@
         if (window.awmAdminData) {
             initColorPickers();
         }
-        if (document.querySelector('.awm-tab-content')) {
-            initSettingsTabs();
-        }
+        // Always try to initialize tabs on settings page
+        initSettingsTabs();
 
         // Get DOM elements for modal
         modalOverlay = document.getElementById('awm-admin-modal-overlay');
