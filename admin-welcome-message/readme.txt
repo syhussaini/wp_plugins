@@ -4,7 +4,7 @@ Tags: admin, modal, welcome, notification, admin-bar, dashboard
 Requires at least: 5.8
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Plugin URI: https://www.zaha.in
@@ -22,8 +22,7 @@ Admin Welcome Message is a powerful WordPress plugin that allows site administra
 * **Fully Customizable Content**: Set custom titles, messages, CTA buttons, and footer notes
 * **Rich Text Editor**: Use the WordPress editor for message content with HTML support
 * **Flexible Session Management**: Choose between per-session dismissal or configurable cooldown periods
-* **Role-Based Targeting**: Restrict modal display to specific user roles
-* **Screen-Specific Display**: Show modals only on specific admin screens
+* **(Temporarily removed) Targeting**: Role and screen targeting will return in a future release
 * **Color Customization**: Full control over header, body, footer, and button colors
 * **Responsive Design**: Mobile-friendly modal that works on all devices
 * **Accessibility Features**: Keyboard navigation, focus management, and screen reader support
@@ -48,7 +47,7 @@ Admin Welcome Message is a powerful WordPress plugin that allows site administra
 
 = Can I show different modals to different user roles? =
 
-Yes! You can restrict modal display to specific user roles in the Targeting Settings section. Leave the roles field empty to show the modal to all users with appropriate capabilities.
+Targeting is temporarily removed in v1.1.2 and will return in a future release.
 
 = How does the session management work? =
 
@@ -58,7 +57,7 @@ The plugin offers two dismissal modes:
 
 = Can I restrict the modal to specific admin screens? =
 
-Absolutely! In the Targeting Settings, you can enter screen IDs (one per line) to restrict where the modal appears. Common screen IDs include: dashboard, post, edit-post, page, edit-page, upload, users, etc.
+Screen targeting is temporarily removed in v1.1.2 and will return in a future release.
 
 = Is the modal mobile-friendly? =
 
@@ -75,19 +74,16 @@ Yes! The plugin provides several hooks and filters:
 
 1. Settings page with content configuration
 2. Appearance settings with color pickers
-3. Behavior and targeting options
-4. Live preview of the modal
-5. Modal displayed in admin area
+3. Behavior options
+4. Modal displayed in admin area
 
 == Changelog ==
 
-= 1.0.0 =
-* Initial release
-* Full customization options
-* Role and screen targeting
-* Session management
-* Responsive design
-* Accessibility features
+= 1.1.2 =
+* Removed Targeting tab and role/screen restrictions (temporary)
+* Removed Live Preview and Screen ID helper (temporary)
+* Stability improvements to settings UI
+* Minor fixes
 
 == Upgrade Notice ==
 

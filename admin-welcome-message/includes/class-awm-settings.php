@@ -239,13 +239,7 @@ class Settings {
         <div class="wrap">
             <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
             
-            <!-- Live Preview Button -->
-            <div class="awm-preview-button-container" style="margin: 20px 0;">
-                <button type="button" id="awm-live-preview-btn" class="button button-primary button-large">
-                    <span class="dashicons dashicons-visibility" style="margin-right: 5px;"></span>
-                    <?php _e('Live Preview', 'admin-welcome-message'); ?>
-                </button>
-            </div>
+            
             
             <!-- Tab Navigation -->
             <nav class="nav-tab-wrapper wp-clearfix" role="tablist">
@@ -310,7 +304,6 @@ class Settings {
                         <h3><?php _e('Features', 'admin-welcome-message'); ?></h3>
                         <ul>
                             <li><?php _e('Fully customizable content and appearance', 'admin-welcome-message'); ?></li>
-                            <li><?php _e('Role-based targeting and screen restrictions', 'admin-welcome-message'); ?></li>
                             <li><?php _e('Flexible session management (per-session or cooldown)', 'admin-welcome-message'); ?></li>
                             <li><?php _e('Responsive design with accessibility features', 'admin-welcome-message'); ?></li>
                             <li><?php _e('Developer-friendly hooks and filters', 'admin-welcome-message'); ?></li>
@@ -327,21 +320,13 @@ class Settings {
                             <li><?php _e('Configure your modal content in the Content tab', 'admin-welcome-message'); ?></li>
                             <li><?php _e('Set behavior options in the Behavior tab', 'admin-welcome-message'); ?></li>
                             <li><?php _e('Customize colors in the Appearance tab', 'admin-welcome-message'); ?></li>
-                            <li><?php _e('Set targeting rules in the Targeting tab', 'admin-welcome-message'); ?></li>
-                            <li><?php _e('Use the Live Preview button to see changes instantly', 'admin-welcome-message'); ?></li>
                             <li><?php _e('Save your settings when satisfied', 'admin-welcome-message'); ?></li>
                         </ol>
                         
                         <h3><?php _e('Common Questions', 'admin-welcome-message'); ?></h3>
                         <div class="awm-faq">
-                            <h4><?php _e('How do I restrict the modal to specific user roles?', 'admin-welcome-message'); ?></h4>
-                            <p><?php _e('Go to the Targeting tab and select the user roles that should see the modal. Leave empty to show to all users.', 'admin-welcome-message'); ?></p>
-                            
-                            <h4><?php _e('Can I show the modal on specific admin screens only?', 'admin-welcome-message'); ?></h4>
-                            <p><?php _e('Yes! In the Targeting tab, enter screen IDs (one per line) to restrict where the modal appears.', 'admin-welcome-message'); ?></p>
-                            
                             <h4><?php _e('How does the session management work?', 'admin-welcome-message'); ?></h4>
-                            <p><?php _e('Choose between Per Session (hidden until logout) or Cooldown Minutes (reappears after specified time) in the Behavior tab.', 'admin-welcome-message'); ?></p>
+                            <p><?php _e('Choose between Per Session (hidden until logout) or Cooldown Minutes (reappears after specified time) in the Behavior tab. You can also disable overlay/ESC close.', 'admin-welcome-message'); ?></p>
                         </div>
                         
                         <h3><?php _e('Need More Help?', 'admin-welcome-message'); ?></h3>

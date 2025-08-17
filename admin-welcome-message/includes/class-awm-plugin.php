@@ -34,15 +34,9 @@ class Plugin {
         add_action('admin_menu', [$this, 'add_admin_menu']);
         add_action('admin_init', [$this, 'init_settings']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
-        add_action('current_screen', [$this, 'capture_screen']);
-        add_action('admin_bar_menu', [$this, 'add_adminbar_screen_id'], 1000);
+        // Screen ID helper removed in v1.1.2
     }
-    /** @var \WP_Screen|null */
-    private $current_screen = null;
-
-    public function capture_screen($screen) {
-        $this->current_screen = $screen;
-    }
+    // Screen ID helper removed in v1.1.2
     
     /**
      * Initialize plugin components
@@ -112,22 +106,5 @@ class Plugin {
         ]);
     }
 
-    /**
-     * Add current screen ID to admin bar for admins
-     */
-    public function add_adminbar_screen_id($wp_admin_bar) {
-        if (!current_user_can('manage_options')) {
-            return;
-        }
-        if (!is_admin()) {
-            return;
-        }
-        $screen = $this->current_screen ?: (function_exists('get_current_screen') ? get_current_screen() : null);
-        $id = $screen && isset($screen->id) ? $screen->id : __('unknown', 'admin-welcome-message');
-        $wp_admin_bar->add_node([
-            'id' => 'awm-screen-id',
-            'title' => sprintf(__('Screen ID: %s', 'admin-welcome-message'), esc_html($id)),
-            'href' => false,
-        ]);
-    }
+    // Screen ID helper removed in v1.1.2
 }
