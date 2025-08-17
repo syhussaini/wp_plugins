@@ -14,7 +14,7 @@ A customizable admin modal that displays welcome messages with configurable cont
 - Responsive design with accessibility features
 - Developer-friendly hooks and filters
 
-**Download:** [Latest Release](https://github.com/syhussaini/wp_plugins/releases)
+**Download:** [Latest Release](https://github.com/syhussaini/wp_plugins/releases) | [Direct Download (v1.0.0)](./admin-welcome-message-v1.0.0.zip)
 
 ---
 
