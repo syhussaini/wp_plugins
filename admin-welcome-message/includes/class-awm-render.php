@@ -100,20 +100,17 @@ class Render {
                 
                 <div id="awm-admin-modal-buttons">
                     <?php
-                    $cta_attributes = '';
-                    if (!empty($options['cta_new_tab'])) {
-                        $cta_attributes = ' target="_blank" rel="noopener noreferrer"';
-                    }
+                    $open_new = !empty($options['cta_new_tab']);
                     ?>
                     <?php if (!isset($options['show_cta']) || $options['show_cta']) : ?>
                         <a href="<?php echo esc_url($options['cta_url'] ?? '#'); ?>" 
                            class="awm-modal-btn" 
-                           id="awm-access-help-btn"<?php echo $cta_attributes; ?>>
+                           id="awm-access-help-btn"<?php if ($open_new) { printf(' target="%s" rel="%s"', esc_attr('_blank'), esc_attr('noopener noreferrer')); } ?>>
                             <?php echo esc_html($options['cta_text'] ?? __('Access Help', 'admin-welcome-message')); ?>
                         </a>
                     <?php endif; ?>
                     <button class="awm-modal-btn" id="awm-close-modal-btn">
-                        <?php _e('Close', 'admin-welcome-message'); ?>
+                        <?php echo esc_html__('Close', 'admin-welcome-message'); ?>
                     </button>
                 </div>
                 
