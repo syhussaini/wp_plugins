@@ -248,6 +248,7 @@ class Settings {
                 <a href="#content-tab" class="nav-tab nav-tab-active" data-tab="content"><?php echo esc_html__('Content', 'admin-welcome-message'); ?></a>
                 <a href="#behavior-tab" class="nav-tab" data-tab="behavior"><?php echo esc_html__('Behavior', 'admin-welcome-message'); ?></a>
                 <a href="#appearance-tab" class="nav-tab" data-tab="appearance"><?php echo esc_html__('Appearance', 'admin-welcome-message'); ?></a>
+                <a href="#donate-tab" class="nav-tab" data-tab="donate"><?php echo esc_html__('Donate', 'admin-welcome-message'); ?></a>
                 <a href="#about-tab" class="nav-tab" data-tab="about"><?php echo esc_html__('About', 'admin-welcome-message'); ?></a>
                 <a href="#help-tab" class="nav-tab" data-tab="help"><?php echo esc_html__('Help', 'admin-welcome-message'); ?></a>
             </nav>
@@ -274,6 +275,24 @@ class Settings {
                     <h2><?php echo esc_html__('Appearance Settings', 'admin-welcome-message'); ?></h2>
                     <p><?php echo esc_html__('Customize the colors and visual appearance of your modal.', 'admin-welcome-message'); ?></p>
                     <?php do_settings_sections('admin-welcome-message-appearance'); ?>
+                </div>
+                
+                <!-- Donate Tab -->
+                <div id="donate-tab" class="awm-tab-content" role="tabpanel">
+                    <h2><?php echo esc_html__('Support Development', 'admin-welcome-message'); ?></h2>
+                    <div class="awm-donate-container">
+                        <p>
+                            <?php echo esc_html__('If this plugin saved you time or helped your workflow, please consider supporting continued development.', 'admin-welcome-message'); ?>
+                        </p>
+                        <p>
+                            <a class="awm-paypal-btn" href="<?php echo esc_url('https://paypal.me/syhussaini'); ?>" target="_blank" rel="noopener noreferrer">
+                                <?php echo esc_html__('Donate via PayPal', 'admin-welcome-message'); ?>
+                            </a>
+                        </p>
+                        <p class="description">
+                            <?php echo esc_html__('Your contribution helps fund maintenance, new features, and timely support. Thank you!', 'admin-welcome-message'); ?>
+                        </p>
+                    </div>
                 </div>
                 
                 <!-- Targeting Tab -->
