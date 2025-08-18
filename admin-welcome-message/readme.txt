@@ -9,11 +9,11 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Plugin URI: https://www.zaha.in
 
-**Note:** This is the plugin's readme.txt file. For repository overview, see the main [README.md](https://github.com/syhussaini/wp_plugins#readme) in the repository root.
-
 Admin-only welcome modal with customizable content, colors, and dismissal behavior.
 
 == Description ==
+
+**Note:** This is the plugin's readme.txt file. For repository overview, see the main [README.md](https://github.com/syhussaini/wp_plugins#readme) in the repository root.
 
 Admin Welcome Message is a powerful WordPress plugin that allows site administrators to create and customize welcome modals for their admin area. Perfect for onboarding new users, displaying important announcements, or providing quick access to help resources.
 
