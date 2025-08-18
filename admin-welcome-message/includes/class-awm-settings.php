@@ -449,7 +449,9 @@ class Settings {
         $is_checked = isset($options[$field]) && (bool) $options[$field];
         $description = isset($args['description']) ? $args['description'] : '';
         
-        echo '<input type="checkbox" id="awm_' . esc_attr($field) . '" name="' . esc_attr($this->option_name) . '[' . esc_attr($field) . ']" value="1" ' . checked($is_checked, true, false) . ' />';
+        echo '<input type="checkbox" id="awm_' . esc_attr($field) . '" name="' . esc_attr($this->option_name) . '[' . esc_attr($field) . ']" value="1"';
+        checked($is_checked, true);
+        echo ' />';
         echo '<label for="awm_' . esc_attr($field) . '">' . esc_html($description) . '</label>';
     }
     
@@ -464,8 +466,9 @@ class Settings {
         $description = isset($args['description']) ? $args['description'] : '';
         
         foreach ($radio_options as $value => $label) {
-            $checked_attr = checked($current_value, $value, false);
-            echo '<label><input type="radio" name="' . esc_attr($this->option_name) . '[' . esc_attr($field) . ']" value="' . esc_attr($value) . '" ' . $checked_attr . ' /> ' . esc_html($label) . '</label><br />';
+            echo '<label><input type="radio" name="' . esc_attr($this->option_name) . '[' . esc_attr($field) . ']" value="' . esc_attr($value) . '" ';
+            checked($current_value, $value);
+            echo ' /> ' . esc_html($label) . '</label><br />';
         }
         if ($description) {
             echo '<p class="description">' . esc_html($description) . '</p>';
@@ -504,8 +507,9 @@ class Settings {
         $roles = wp_roles()->get_names();
         
         foreach ($roles as $role_value => $role_name) {
-            $checked_attr = checked(in_array($role_value, $selected_roles, true), true, false);
-            echo '<label><input type="checkbox" name="' . esc_attr($this->option_name) . '[' . esc_attr($field) . '][]" value="' . esc_attr($role_value) . '" ' . $checked_attr . ' /> ' . esc_html($role_name) . '</label><br />';
+            echo '<label><input type="checkbox" name="' . esc_attr($this->option_name) . '[' . esc_attr($field) . '][]" value="' . esc_attr($role_value) . '" ';
+            checked(in_array($role_value, $selected_roles, true), true);
+            echo ' /> ' . esc_html($role_name) . '</label><br />';
         }
         if ($description) {
             echo '<p class="description">' . esc_html($description) . '</p>';

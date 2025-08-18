@@ -11,7 +11,7 @@ Plugin URI: https://www.zaha.in
 
 **Note:** This is the plugin's readme.txt file. For repository overview, see the main [README.md](https://github.com/syhussaini/wp_plugins#readme) in the repository root.
 
-A customizable admin modal for wp-admin with configurable content, colors, and dismissal behavior for onboarding and announcements.
+Admin-only welcome modal with configurable content, colors, and dismissal behavior for onboarding and announcements.
 
 == Description ==
 
