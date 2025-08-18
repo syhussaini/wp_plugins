@@ -1,6 +1,6 @@
 === Admin Welcome Message ===
 Contributors: Syed Hussaini
-Tags: admin, modal, welcome, notification, admin-bar, dashboard
+Tags: admin, modal, welcome, notification, dashboard
 Requires at least: 5.8
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -11,7 +11,7 @@ Plugin URI: https://www.zaha.in
 
 **Note:** This is the plugin's readme.txt file. For repository overview, see the main [README.md](https://github.com/syhussaini/wp_plugins#readme) in the repository root.
 
-A customizable admin modal that displays welcome messages with configurable content, styling, and session behavior.
+A customizable admin modal for wp-admin with configurable content, colors, and dismissal behavior for onboarding and announcements.
 
 == Description ==
 

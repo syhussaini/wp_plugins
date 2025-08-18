@@ -20,12 +20,7 @@ delete_transient('awm_modal_cache');
 wp_clear_scheduled_hook('awm_cleanup_session_data');
 
 // Clean up user meta if we implemented "once per login" feature
-global $wpdb;
-$wpdb->delete(
-    $wpdb->usermeta,
-    ['meta_key' => 'awm_modal_shown'],
-    ['%s']
-);
+delete_metadata('user', 0, 'awm_modal_shown', '', true);
 
 // Clean up any custom database tables if created in future versions
 // $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}awm_modal_logs");

@@ -427,11 +427,14 @@ class Settings {
         $max = isset($args['max']) ? $args['max'] : '';
         $description = isset($args['description']) ? $args['description'] : '';
         
-        $attributes = '';
-        if ($min !== '') $attributes .= ' min="' . esc_attr($min) . '"';
-        if ($max !== '') $attributes .= ' max="' . esc_attr($max) . '"';
-        
-        echo '<input type="number" id="awm_' . esc_attr($field) . '" name="' . esc_attr($this->option_name) . '[' . esc_attr($field) . ']" value="' . esc_attr($value) . '" class="small-text"' . $attributes . ' />';
+        echo '<input type="number" id="awm_' . esc_attr($field) . '" name="' . esc_attr($this->option_name) . '[' . esc_attr($field) . ']" value="' . esc_attr($value) . '" class="small-text"';
+        if ($min !== '') {
+            echo ' min="' . esc_attr($min) . '"';
+        }
+        if ($max !== '') {
+            echo ' max="' . esc_attr($max) . '"';
+        }
+        echo ' />';
         if ($description) {
             echo '<p class="description">' . esc_html($description) . '</p>';
         }
@@ -443,10 +446,10 @@ class Settings {
     public function render_checkbox_field($args) {
         $options = get_option($this->option_name, []);
         $field = $args['field'];
-        $checked = isset($options[$field]) && $options[$field] ? 'checked' : '';
+        $is_checked = isset($options[$field]) && (bool) $options[$field];
         $description = isset($args['description']) ? $args['description'] : '';
         
-        echo '<input type="checkbox" id="awm_' . esc_attr($field) . '" name="' . esc_attr($this->option_name) . '[' . esc_attr($field) . ']" value="1" ' . $checked . ' />';
+        echo '<input type="checkbox" id="awm_' . esc_attr($field) . '" name="' . esc_attr($this->option_name) . '[' . esc_attr($field) . ']" value="1" ' . checked($is_checked, true, false) . ' />';
         echo '<label for="awm_' . esc_attr($field) . '">' . esc_html($description) . '</label>';
     }
     
@@ -461,8 +464,8 @@ class Settings {
         $description = isset($args['description']) ? $args['description'] : '';
         
         foreach ($radio_options as $value => $label) {
-            $checked = ($current_value === $value) ? 'checked' : '';
-            echo '<label><input type="radio" name="' . esc_attr($this->option_name) . '[' . esc_attr($field) . ']" value="' . esc_attr($value) . '" ' . $checked . ' /> ' . esc_html($label) . '</label><br>';
+            $checked_attr = checked($current_value, $value, false);
+            echo '<label><input type="radio" name="' . esc_attr($this->option_name) . '[' . esc_attr($field) . ']" value="' . esc_attr($value) . '" ' . $checked_attr . ' /> ' . esc_html($label) . '</label><br />';
         }
         if ($description) {
             echo '<p class="description">' . esc_html($description) . '</p>';
@@ -501,8 +504,8 @@ class Settings {
         $roles = wp_roles()->get_names();
         
         foreach ($roles as $role_value => $role_name) {
-            $checked = in_array($role_value, $selected_roles) ? 'checked' : '';
-            echo '<label><input type="checkbox" name="' . esc_attr($this->option_name) . '[' . esc_attr($field) . '][]" value="' . esc_attr($role_value) . '" ' . $checked . ' /> ' . esc_html($role_name) . '</label><br>';
+            $checked_attr = checked(in_array($role_value, $selected_roles, true), true, false);
+            echo '<label><input type="checkbox" name="' . esc_attr($this->option_name) . '[' . esc_attr($field) . '][]" value="' . esc_attr($role_value) . '" ' . $checked_attr . ' /> ' . esc_html($role_name) . '</label><br />';
         }
         if ($description) {
             echo '<p class="description">' . esc_html($description) . '</p>';
