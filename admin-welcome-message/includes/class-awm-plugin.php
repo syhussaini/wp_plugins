@@ -57,7 +57,7 @@ class Plugin {
             __('Admin Welcome Message', 'zaha-admin-welcome-message'),
             __('Admin Welcome Message', 'zaha-admin-welcome-message'),
             'manage_options',
-            'zaha-admin-welcome-message',
+            'admin-welcome-message',
             [$this->settings, 'render_settings_page']
         );
     }
@@ -75,8 +75,8 @@ class Plugin {
     public function enqueue_admin_scripts($hook) {
         // Enqueue on our settings page; be resilient to hook variations
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check of page param for enqueue gating
-        $is_our_page = (isset($_GET['page']) && $_GET['page'] === 'zaha-admin-welcome-message')
-            || (is_string($hook) && strpos($hook, 'zaha-admin-welcome-message') !== false);
+        $is_our_page = (isset($_GET['page']) && $_GET['page'] === 'admin-welcome-message')
+            || (is_string($hook) && strpos($hook, 'admin-welcome-message') !== false);
         if (!$is_our_page) {
             return;
         }
