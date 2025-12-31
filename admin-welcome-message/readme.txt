@@ -1,13 +1,12 @@
 === Admin Welcome Message ===
-Contributors: Syed Hussaini
+Contributors: syhussaini
 Tags: admin, modal, welcome, notification, dashboard
 Requires at least: 5.8
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.4
 Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Plugin URI: https://www.zaha.in
 
 Admin-only welcome modal with customizable content, colors, and dismissal behavior.
 
@@ -72,10 +71,7 @@ Yes! The plugin provides several hooks and filters:
 
 == Screenshots ==
 
-1. Settings page with content configuration
-2. Appearance settings with color pickers
-3. Behavior options
-4. Modal displayed in admin area
+Screenshots will be added in a future update.
 
 == Changelog ==
 

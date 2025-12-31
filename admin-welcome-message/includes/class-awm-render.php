@@ -5,6 +5,11 @@
  * @package AdminWelcomeModal
  */
 
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 namespace AWM;
 
 class Render {
@@ -42,9 +47,7 @@ class Render {
         
         $options = get_option('awm_options', []);
         wp_localize_script('awm-modal', 'awmModalData', [
-            'options' => $options,
-            'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('awm_modal_nonce')
+            'options' => $options
         ]);
     }
     
@@ -56,16 +59,6 @@ class Render {
         if (!is_admin()) {
             return false;
         }
-        
-        // Show for all logged-in admin users regardless of role (remove manage_options restriction)
-        
-        $options = get_option('awm_options', []);
-        
-        // Check role restrictions
-        // Role restrictions removed in v1.1.2
-        
-        // Check screen restrictions
-        // Screen restrictions removed in v1.1.2
         
         // Apply filters for developers
         return apply_filters('awm_should_show_modal', true, get_current_screen(), wp_get_current_user());
@@ -91,7 +84,7 @@ class Render {
         <div id="awm-admin-modal-overlay" style="display:none;">
             <div id="awm-admin-modal" style="<?php echo esc_attr($css_vars); ?>">
                 <div id="awm-admin-modal-header">
-                    <?php echo esc_html($options['title'] ?? __('Welcome', 'admin-welcome-message')); ?>
+                    <?php echo esc_html($options['title'] ?? __('Welcome', 'zaha-admin-welcome-message')); ?>
                 </div>
                 
                 <div id="awm-admin-modal-content">
@@ -106,18 +99,18 @@ class Render {
                         <a href="<?php echo esc_url($options['cta_url'] ?? '#'); ?>" 
                            class="awm-modal-btn" 
                            id="awm-access-help-btn"<?php if ($open_new) { printf(' target="%s" rel="%s"', esc_attr('_blank'), esc_attr('noopener noreferrer')); } ?>>
-                            <?php echo esc_html($options['cta_text'] ?? __('Access Help', 'admin-welcome-message')); ?>
+                            <?php echo esc_html($options['cta_text'] ?? __('Access Help', 'zaha-admin-welcome-message')); ?>
                         </a>
                     <?php endif; ?>
                     <button class="awm-modal-btn" id="awm-close-modal-btn">
-                        <?php echo esc_html__('Close', 'admin-welcome-message'); ?>
+                        <?php echo esc_html__('Close', 'zaha-admin-welcome-message'); ?>
                     </button>
                 </div>
                 
                 <div id="awm-admin-modal-footer">
                     <input type="checkbox" id="awm-hide-session-checkbox">
                     <label for="awm-hide-session-checkbox">
-                        <?php echo esc_html($options['footer_note'] ?? __("Don't show this again during my current session", 'admin-welcome-message')); ?>
+                        <?php echo esc_html($options['footer_note'] ?? __("Don't show this again during my current session", 'zaha-admin-welcome-message')); ?>
                     </label>
                 </div>
             </div>

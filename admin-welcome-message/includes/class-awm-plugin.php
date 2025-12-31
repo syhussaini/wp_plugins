@@ -5,6 +5,11 @@
  * @package AdminWelcomeModal
  */
 
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 namespace AWM;
 
 class Plugin {
@@ -34,9 +39,7 @@ class Plugin {
         add_action('admin_menu', [$this, 'add_admin_menu']);
         add_action('admin_init', [$this, 'init_settings']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
-        // Screen ID helper removed in v1.1.2
     }
-    // Screen ID helper removed in v1.1.2
     
     /**
      * Initialize plugin components
@@ -51,10 +54,10 @@ class Plugin {
      */
     public function add_admin_menu() {
         add_options_page(
-            __('Admin Welcome Message', 'admin-welcome-message'),
-            __('Admin Welcome Message', 'admin-welcome-message'),
+            __('Admin Welcome Message', 'zaha-admin-welcome-message'),
+            __('Admin Welcome Message', 'zaha-admin-welcome-message'),
             'manage_options',
-            'admin-welcome-message',
+            'zaha-admin-welcome-message',
             [$this->settings, 'render_settings_page']
         );
     }
@@ -72,8 +75,8 @@ class Plugin {
     public function enqueue_admin_scripts($hook) {
         // Enqueue on our settings page; be resilient to hook variations
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check of page param for enqueue gating
-        $is_our_page = (isset($_GET['page']) && $_GET['page'] === 'admin-welcome-message')
-            || (is_string($hook) && strpos($hook, 'admin-welcome-message') !== false);
+        $is_our_page = (isset($_GET['page']) && $_GET['page'] === 'zaha-admin-welcome-message')
+            || (is_string($hook) && strpos($hook, 'zaha-admin-welcome-message') !== false);
         if (!$is_our_page) {
             return;
         }
@@ -98,14 +101,11 @@ class Plugin {
         );
         
         wp_localize_script('awm-admin', 'awmAdminData', [
-            'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('awm_admin_nonce'),
             'strings' => [
-                'saved' => __('Settings saved successfully!', 'admin-welcome-message'),
-                'error' => __('Error saving settings.', 'admin-welcome-message')
+                'saved' => __('Settings saved successfully!', 'zaha-admin-welcome-message'),
+                'error' => __('Error saving settings.', 'zaha-admin-welcome-message')
             ]
         ]);
     }
 
-    // Screen ID helper removed in v1.1.2
 }

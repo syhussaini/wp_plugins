@@ -5,6 +5,11 @@
  * @package AdminWelcomeModal
  */
 
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 namespace AWM;
 
 class Settings {
@@ -34,26 +39,24 @@ class Settings {
     private function add_settings_sections() {
         add_settings_section(
             'awm_content_section',
-            __('Content Settings', 'admin-welcome-message'),
+            __('Content Settings', 'zaha-admin-welcome-message'),
             [$this, 'render_content_section'],
             'admin-welcome-message-content'
         );
         
         add_settings_section(
             'awm_behavior_section',
-            __('Behavior Settings', 'admin-welcome-message'),
+            __('Behavior Settings', 'zaha-admin-welcome-message'),
             [$this, 'render_behavior_section'],
             'admin-welcome-message-behavior'
         );
         
         add_settings_section(
             'awm_appearance_section',
-            __('Appearance Settings', 'admin-welcome-message'),
+            __('Appearance Settings', 'zaha-admin-welcome-message'),
             [$this, 'render_appearance_section'],
             'admin-welcome-message-appearance'
         );
-        
-        // Targeting section removed in v1.1.2
     }
     
     /**
@@ -63,69 +66,69 @@ class Settings {
         // Content fields
         add_settings_field(
             'awm_title',
-            __('Modal Title', 'admin-welcome-message'),
+            __('Modal Title', 'zaha-admin-welcome-message'),
             [$this, 'render_text_field'],
             'admin-welcome-message-content',
             'awm_content_section',
-            ['field' => 'title', 'description' => __('The title displayed in the modal header.', 'admin-welcome-message')]
+            ['field' => 'title', 'description' => __('The title displayed in the modal header.', 'zaha-admin-welcome-message')]
         );
         
         add_settings_field(
             'awm_message',
-            __('Modal Message', 'admin-welcome-message'),
+            __('Modal Message', 'zaha-admin-welcome-message'),
             [$this, 'render_editor_field'],
             'admin-welcome-message-content',
             'awm_content_section',
-            ['field' => 'message', 'description' => __('The main message content. HTML is allowed.', 'admin-welcome-message')]
+            ['field' => 'message', 'description' => __('The main message content. HTML is allowed.', 'zaha-admin-welcome-message')]
         );
         
         add_settings_field(
             'awm_cta_text',
-            __('CTA Button Text', 'admin-welcome-message'),
+            __('CTA Button Text', 'zaha-admin-welcome-message'),
             [$this, 'render_text_field'],
             'admin-welcome-message-content',
             'awm_content_section',
-            ['field' => 'cta_text', 'description' => __('Text for the call-to-action button.', 'admin-welcome-message')]
+            ['field' => 'cta_text', 'description' => __('Text for the call-to-action button.', 'zaha-admin-welcome-message')]
         );
         
         add_settings_field(
             'awm_cta_url',
-            __('CTA Button URL', 'admin-welcome-message'),
+            __('CTA Button URL', 'zaha-admin-welcome-message'),
             [$this, 'render_url_field'],
             'admin-welcome-message-content',
             'awm_content_section',
-            ['field' => 'cta_url', 'description' => __('URL for the call-to-action button.', 'admin-welcome-message')]
+            ['field' => 'cta_url', 'description' => __('URL for the call-to-action button.', 'zaha-admin-welcome-message')]
         );
         
         add_settings_field(
             'awm_footer_note',
-            __('Footer Note', 'admin-welcome-message'),
+            __('Footer Note', 'zaha-admin-welcome-message'),
             [$this, 'render_text_field'],
             'admin-welcome-message-content',
             'awm_content_section',
-            ['field' => 'footer_note', 'description' => __('Text for the footer checkbox.', 'admin-welcome-message')]
+            ['field' => 'footer_note', 'description' => __('Text for the footer checkbox.', 'zaha-admin-welcome-message')]
         );
         
         // Behavior fields
         add_settings_field(
             'awm_dismiss_mode',
-            __('Dismissal Mode', 'admin-welcome-message'),
+            __('Dismissal Mode', 'zaha-admin-welcome-message'),
             [$this, 'render_radio_field'],
             'admin-welcome-message-behavior',
             'awm_behavior_section',
             [
                 'field' => 'dismiss_mode',
                 'options' => [
-                    'cooldown' => __('Cooldown Minutes', 'admin-welcome-message'),
-                    'always' => __('Open on every reload', 'admin-welcome-message')
+                    'cooldown' => __('Cooldown Minutes', 'zaha-admin-welcome-message'),
+                    'always' => __('Open on every reload', 'zaha-admin-welcome-message')
                 ],
-                'description' => __('Choose how the modal reappears after close.', 'admin-welcome-message')
+                'description' => __('Choose how the modal reappears after close.', 'zaha-admin-welcome-message')
             ]
         );
         
         add_settings_field(
             'awm_cooldown_minutes',
-            __('Cooldown Minutes', 'admin-welcome-message'),
+            __('Cooldown Minutes', 'zaha-admin-welcome-message'),
             [$this, 'render_number_field'],
             'admin-welcome-message-behavior',
             'awm_behavior_section',
@@ -133,68 +136,66 @@ class Settings {
                 'field' => 'cooldown_minutes',
                 'min' => 1,
                 'max' => 1440,
-                'description' => __('Minutes to wait before showing the modal again (1-1440).', 'admin-welcome-message')
+                'description' => __('Minutes to wait before showing the modal again (1-1440).', 'zaha-admin-welcome-message')
             ]
         );
         
         add_settings_field(
             'awm_close_on_esc',
-            __('Close on ESC Key', 'admin-welcome-message'),
+            __('Close on ESC Key', 'zaha-admin-welcome-message'),
             [$this, 'render_checkbox_field'],
             'admin-welcome-message-behavior',
             'awm_behavior_section',
-            ['field' => 'close_on_esc', 'description' => __('Allow closing the modal with the ESC key.', 'admin-welcome-message')]
+            ['field' => 'close_on_esc', 'description' => __('Allow closing the modal with the ESC key.', 'zaha-admin-welcome-message')]
         );
         
         add_settings_field(
             'awm_close_on_cta',
-            __('Close on CTA Click', 'admin-welcome-message'),
+            __('Close on CTA Click', 'zaha-admin-welcome-message'),
             [$this, 'render_checkbox_field'],
             'admin-welcome-message-behavior',
             'awm_behavior_section',
-            ['field' => 'close_on_cta', 'description' => __('Close the modal when CTA button is clicked.', 'admin-welcome-message')]
+            ['field' => 'close_on_cta', 'description' => __('Close the modal when CTA button is clicked.', 'zaha-admin-welcome-message')]
         );
 
         add_settings_field(
             'awm_close_on_overlay',
-            __('Close on overlay click', 'admin-welcome-message'),
+            __('Close on overlay click', 'zaha-admin-welcome-message'),
             [$this, 'render_checkbox_field'],
             'admin-welcome-message-behavior',
             'awm_behavior_section',
-            ['field' => 'close_on_overlay', 'description' => __('Allow closing the modal when clicking outside the modal.', 'admin-welcome-message')]
+            ['field' => 'close_on_overlay', 'description' => __('Allow closing the modal when clicking outside the modal.', 'zaha-admin-welcome-message')]
         );
 
         add_settings_field(
             'awm_enable_session_hide',
-            __('Per Session (until logout/tab closed)', 'admin-welcome-message'),
+            __('Per Session (until logout/tab closed)', 'zaha-admin-welcome-message'),
             [$this, 'render_checkbox_field'],
             'admin-welcome-message-behavior',
             'awm_behavior_section',
-            ['field' => 'enable_session_hide', 'description' => __('If checked and the footer checkbox is ticked, the modal will stay hidden until the session ends.', 'admin-welcome-message')]
+            ['field' => 'enable_session_hide', 'description' => __('If checked and the footer checkbox is ticked, the modal will stay hidden until the session ends.', 'zaha-admin-welcome-message')]
         );
         
         add_settings_field(
             'awm_cta_new_tab',
-            __('Open CTA in New Tab', 'admin-welcome-message'),
+            __('Open CTA in New Tab', 'zaha-admin-welcome-message'),
             [$this, 'render_checkbox_field'],
             'admin-welcome-message-behavior',
             'awm_behavior_section',
-            ['field' => 'cta_new_tab', 'description' => __('Open the CTA link in a new tab.', 'admin-welcome-message')]
+            ['field' => 'cta_new_tab', 'description' => __('Open the CTA link in a new tab.', 'zaha-admin-welcome-message')]
         );
 
         add_settings_field(
             'awm_show_cta',
-            __('Show CTA Button', 'admin-welcome-message'),
+            __('Show CTA Button', 'zaha-admin-welcome-message'),
             [$this, 'render_checkbox_field'],
             'admin-welcome-message-behavior',
             'awm_behavior_section',
-            ['field' => 'show_cta', 'description' => __('Display the CTA button in the modal.', 'admin-welcome-message')]
+            ['field' => 'show_cta', 'description' => __('Display the CTA button in the modal.', 'zaha-admin-welcome-message')]
         );
         
         // Appearance fields
         $this->add_color_fields();
-        
-        // Targeting removed in v1.1.2
     }
     
     /**
@@ -202,21 +203,21 @@ class Settings {
      */
     private function add_color_fields() {
         $color_fields = [
-            'header_bg' => __('Header Background', 'admin-welcome-message'),
-            'header_text' => __('Header Text', 'admin-welcome-message'),
-            'body_bg' => __('Body Background', 'admin-welcome-message'),
-            'body_text' => __('Body Text', 'admin-welcome-message'),
-            'footer_bg' => __('Footer Background', 'admin-welcome-message'),
-            'footer_text' => __('Footer Text', 'admin-welcome-message'),
-            'btn_bg' => __('Button Background', 'admin-welcome-message'),
-            'btn_text' => __('Button Text', 'admin-welcome-message'),
-            'btn_bg_hover' => __('Button Hover Background', 'admin-welcome-message'),
-            'btn_text_hover' => __('Button Hover Text', 'admin-welcome-message')
+            'header_bg' => __('Header Background', 'zaha-admin-welcome-message'),
+            'header_text' => __('Header Text', 'zaha-admin-welcome-message'),
+            'body_bg' => __('Body Background', 'zaha-admin-welcome-message'),
+            'body_text' => __('Body Text', 'zaha-admin-welcome-message'),
+            'footer_bg' => __('Footer Background', 'zaha-admin-welcome-message'),
+            'footer_text' => __('Footer Text', 'zaha-admin-welcome-message'),
+            'btn_bg' => __('Button Background', 'zaha-admin-welcome-message'),
+            'btn_text' => __('Button Text', 'zaha-admin-welcome-message'),
+            'btn_bg_hover' => __('Button Hover Background', 'zaha-admin-welcome-message'),
+            'btn_text_hover' => __('Button Hover Text', 'zaha-admin-welcome-message')
         ];
         
         foreach ($color_fields as $field => $label) {
             // translators: %s: human-readable color label (e.g., "Header Background")
-            $description = sprintf( __('Color for %s.', 'admin-welcome-message'), strtolower($label) );
+            $description = sprintf( __('Color for %s.', 'zaha-admin-welcome-message'), strtolower($label) );
             add_settings_field(
                 'awm_color_' . $field,
                 $label,
@@ -245,12 +246,12 @@ class Settings {
             
             <!-- Tab Navigation -->
             <nav class="nav-tab-wrapper wp-clearfix" role="tablist">
-                <a href="#content-tab" class="nav-tab nav-tab-active" data-tab="content"><?php echo esc_html__('Content', 'admin-welcome-message'); ?></a>
-                <a href="#behavior-tab" class="nav-tab" data-tab="behavior"><?php echo esc_html__('Behavior', 'admin-welcome-message'); ?></a>
-                <a href="#appearance-tab" class="nav-tab" data-tab="appearance"><?php echo esc_html__('Appearance', 'admin-welcome-message'); ?></a>
-                <a href="#donate-tab" class="nav-tab" data-tab="donate"><?php echo esc_html__('Donate', 'admin-welcome-message'); ?></a>
-                <a href="#about-tab" class="nav-tab" data-tab="about"><?php echo esc_html__('About', 'admin-welcome-message'); ?></a>
-                <a href="#help-tab" class="nav-tab" data-tab="help"><?php echo esc_html__('Help', 'admin-welcome-message'); ?></a>
+                <a href="#content-tab" class="nav-tab nav-tab-active" data-tab="content"><?php echo esc_html__('Content', 'zaha-admin-welcome-message'); ?></a>
+                <a href="#behavior-tab" class="nav-tab" data-tab="behavior"><?php echo esc_html__('Behavior', 'zaha-admin-welcome-message'); ?></a>
+                <a href="#appearance-tab" class="nav-tab" data-tab="appearance"><?php echo esc_html__('Appearance', 'zaha-admin-welcome-message'); ?></a>
+                <a href="#donate-tab" class="nav-tab" data-tab="donate"><?php echo esc_html__('Donate', 'zaha-admin-welcome-message'); ?></a>
+                <a href="#about-tab" class="nav-tab" data-tab="about"><?php echo esc_html__('About', 'zaha-admin-welcome-message'); ?></a>
+                <a href="#help-tab" class="nav-tab" data-tab="help"><?php echo esc_html__('Help', 'zaha-admin-welcome-message'); ?></a>
             </nav>
             
             <form method="post" action="options.php">
@@ -258,92 +259,89 @@ class Settings {
                 
                 <!-- Content Tab -->
                 <div id="content-tab" class="awm-tab-content active" role="tabpanel">
-                    <h2><?php echo esc_html__('Content Settings', 'admin-welcome-message'); ?></h2>
-                    <p><?php echo esc_html__('Configure the content and appearance of your admin welcome modal.', 'admin-welcome-message'); ?></p>
+                    <h2><?php echo esc_html__('Content Settings', 'zaha-admin-welcome-message'); ?></h2>
+                    <p><?php echo esc_html__('Configure the content and appearance of your admin welcome modal.', 'zaha-admin-welcome-message'); ?></p>
                     <?php do_settings_sections('admin-welcome-message-content'); ?>
                 </div>
                 
                 <!-- Behavior Tab -->
                 <div id="behavior-tab" class="awm-tab-content" role="tabpanel">
-                    <h2><?php echo esc_html__('Behavior Settings', 'admin-welcome-message'); ?></h2>
-                    <p><?php echo esc_html__('Control how the modal behaves when users interact with it.', 'admin-welcome-message'); ?></p>
+                    <h2><?php echo esc_html__('Behavior Settings', 'zaha-admin-welcome-message'); ?></h2>
+                    <p><?php echo esc_html__('Control how the modal behaves when users interact with it.', 'zaha-admin-welcome-message'); ?></p>
                     <?php do_settings_sections('admin-welcome-message-behavior'); ?>
                 </div>
                 
                 <!-- Appearance Tab -->
                 <div id="appearance-tab" class="awm-tab-content" role="tabpanel">
-                    <h2><?php echo esc_html__('Appearance Settings', 'admin-welcome-message'); ?></h2>
-                    <p><?php echo esc_html__('Customize the colors and visual appearance of your modal.', 'admin-welcome-message'); ?></p>
+                    <h2><?php echo esc_html__('Appearance Settings', 'zaha-admin-welcome-message'); ?></h2>
+                    <p><?php echo esc_html__('Customize the colors and visual appearance of your modal.', 'zaha-admin-welcome-message'); ?></p>
                     <?php do_settings_sections('admin-welcome-message-appearance'); ?>
                 </div>
                 
                 <!-- Donate Tab -->
                 <div id="donate-tab" class="awm-tab-content" role="tabpanel">
-                    <h2><?php echo esc_html__('Support Development', 'admin-welcome-message'); ?></h2>
+                    <h2><?php echo esc_html__('Support Development', 'zaha-admin-welcome-message'); ?></h2>
                     <div class="awm-donate-container">
                         <p>
-                            <?php echo esc_html__('If this plugin saved you time or helped your workflow, please consider supporting continued development.', 'admin-welcome-message'); ?>
+                            <?php echo esc_html__('If this plugin saved you time or helped your workflow, please consider supporting continued development.', 'zaha-admin-welcome-message'); ?>
                         </p>
                         <p>
                             <a class="awm-paypal-btn" href="<?php echo esc_url('https://paypal.me/syhussaini'); ?>" target="_blank" rel="noopener noreferrer">
-                                <?php echo esc_html__('Donate via PayPal', 'admin-welcome-message'); ?>
+                                <?php echo esc_html__('Donate via PayPal', 'zaha-admin-welcome-message'); ?>
                             </a>
                         </p>
                         <p class="description">
-                            <?php echo esc_html__('Your contribution helps fund maintenance, new features, and timely support. Thank you!', 'admin-welcome-message'); ?>
+                            <?php echo esc_html__('Your contribution helps fund maintenance, new features, and timely support. Thank you!', 'zaha-admin-welcome-message'); ?>
                         </p>
                     </div>
                 </div>
                 
-                <!-- Targeting Tab -->
-                
-                
                 <!-- About Tab -->
                 <div id="about-tab" class="awm-tab-content" role="tabpanel">
-                    <h2><?php echo esc_html__('About Admin Welcome Message', 'admin-welcome-message'); ?></h2>
+                    <h2><?php echo esc_html__('About Admin Welcome Message', 'zaha-admin-welcome-message'); ?></h2>
                     <div class="awm-about-content">
-                        <h3><?php echo esc_html__('Plugin Information', 'admin-welcome-message'); ?></h3>
-                        <p><strong><?php echo esc_html__('Version:', 'admin-welcome-message'); ?></strong> <?php echo esc_html(AWM_VERSION); ?></p>
-                        <p><strong><?php echo esc_html__('Author:', 'admin-welcome-message'); ?></strong> <a href="https://www.zaha.in" target="_blank">Syed Hussaini</a></p>
-                        <p><strong><?php echo esc_html__('Website:', 'admin-welcome-message'); ?></strong> <a href="https://www.zaha.in" target="_blank">www.Zaha.in</a></p>
-                        <p><strong><?php echo esc_html__('Support:', 'admin-welcome-message'); ?></strong> <a href="https://github.com/syhussaini/wp_plugins/issues" target="_blank">GitHub Issues</a></p>
+                        <h3><?php echo esc_html__('Plugin Information', 'zaha-admin-welcome-message'); ?></h3>
+                        <p><strong><?php echo esc_html__('Version:', 'zaha-admin-welcome-message'); ?></strong> <?php echo esc_html(AWM_VERSION); ?></p>
+                        <p><strong><?php echo esc_html__('Author:', 'zaha-admin-welcome-message'); ?></strong> <a href="https://www.zaha.in" target="_blank">Syed Hussaini</a></p>
+                        <p><strong><?php echo esc_html__('Website:', 'zaha-admin-welcome-message'); ?></strong> <a href="https://www.zaha.in" target="_blank">www.Zaha.in</a></p>
+                        <p><strong><?php echo esc_html__('Support:', 'zaha-admin-welcome-message'); ?></strong> <a href="https://github.com/syhussaini/wp_plugins/issues" target="_blank">GitHub Issues</a></p>
                         
-                        <h3><?php echo esc_html__('Description', 'admin-welcome-message'); ?></h3>
-                        <p><?php echo esc_html__('Admin Welcome Message is a powerful WordPress plugin that allows site administrators to create and customize welcome modals for their admin area. Perfect for onboarding new users, displaying important announcements, or providing quick access to help resources.', 'admin-welcome-message'); ?></p>
+                        <h3><?php echo esc_html__('Description', 'zaha-admin-welcome-message'); ?></h3>
+                        <p><?php echo esc_html__('Admin Welcome Message is a powerful WordPress plugin that allows site administrators to create and customize welcome modals for their admin area. Perfect for onboarding new users, displaying important announcements, or providing quick access to help resources.', 'zaha-admin-welcome-message'); ?></p>
                         
-                        <h3><?php echo esc_html__('Features', 'admin-welcome-message'); ?></h3>
+                        <h3><?php echo esc_html__('Features', 'zaha-admin-welcome-message'); ?></h3>
                         <ul>
-                            <li><?php echo esc_html__('Fully customizable content and appearance', 'admin-welcome-message'); ?></li>
-                            <li><?php echo esc_html__('Flexible session management (per-session or cooldown)', 'admin-welcome-message'); ?></li>
-                            <li><?php echo esc_html__('Responsive design with accessibility features', 'admin-welcome-message'); ?></li>
-                            <li><?php echo esc_html__('Developer-friendly hooks and filters', 'admin-welcome-message'); ?></li>
+                            <li><?php echo esc_html__('Fully customizable content and appearance', 'zaha-admin-welcome-message'); ?></li>
+                            <li><?php echo esc_html__('Flexible session management (per-session or cooldown)', 'zaha-admin-welcome-message'); ?></li>
+                            <li><?php echo esc_html__('Responsive design with accessibility features', 'zaha-admin-welcome-message'); ?></li>
+                            <li><?php echo esc_html__('Developer-friendly hooks and filters', 'zaha-admin-welcome-message'); ?></li>
                         </ul>
                     </div>
                 </div>
                 
                 <!-- Help Tab -->
                 <div id="help-tab" class="awm-tab-content" role="tabpanel">
-                    <h2><?php echo esc_html__('Help & Documentation', 'admin-welcome-message'); ?></h2>
+                    <h2><?php echo esc_html__('Help & Documentation', 'zaha-admin-welcome-message'); ?></h2>
                     <div class="awm-help-content">
-                        <h3><?php echo esc_html__('Quick Start Guide', 'admin-welcome-message'); ?></h3>
+                        <h3><?php echo esc_html__('Quick Start Guide', 'zaha-admin-welcome-message'); ?></h3>
                         <ol>
-                            <li><?php echo esc_html__('Configure your modal content in the Content tab', 'admin-welcome-message'); ?></li>
-                            <li><?php echo esc_html__('Set behavior options in the Behavior tab', 'admin-welcome-message'); ?></li>
-                            <li><?php echo esc_html__('Customize colors in the Appearance tab', 'admin-welcome-message'); ?></li>
-                            <li><?php echo esc_html__('Save your settings when satisfied', 'admin-welcome-message'); ?></li>
+                            <li><?php echo esc_html__('Configure your modal content in the Content tab', 'zaha-admin-welcome-message'); ?></li>
+                            <li><?php echo esc_html__('Set behavior options in the Behavior tab', 'zaha-admin-welcome-message'); ?></li>
+                            <li><?php echo esc_html__('Customize colors in the Appearance tab', 'zaha-admin-welcome-message'); ?></li>
+                            <li><?php echo esc_html__('Save your settings when satisfied', 'zaha-admin-welcome-message'); ?></li>
                         </ol>
                         
-                        <h3><?php echo esc_html__('Common Questions', 'admin-welcome-message'); ?></h3>
+                        <h3><?php echo esc_html__('Common Questions', 'zaha-admin-welcome-message'); ?></h3>
                         <div class="awm-faq">
-                            <h4><?php echo esc_html__('How does the session management work?', 'admin-welcome-message'); ?></h4>
-                            <p><?php echo esc_html__('Choose between Per Session (hidden until logout) or Cooldown Minutes (reappears after specified time) in the Behavior tab. You can also disable overlay/ESC close.', 'admin-welcome-message'); ?></p>
+                            <h4><?php echo esc_html__('How does the session management work?', 'zaha-admin-welcome-message'); ?></h4>
+                            <p><?php echo esc_html__('Choose between Per Session (hidden until logout) or Cooldown Minutes (reappears after specified time) in the Behavior tab. You can also disable overlay/ESC close.', 'zaha-admin-welcome-message'); ?></p>
                         </div>
                         
-                        <h3><?php echo esc_html__('Need More Help?', 'admin-welcome-message'); ?></h3>
-                        <p><?php echo esc_html__('If you need additional support:', 'admin-welcome-message'); ?></p>
+                        <h3><?php echo esc_html__('Need More Help?', 'zaha-admin-welcome-message'); ?></h3>
+                        <p><?php echo esc_html__('If you need additional support:', 'zaha-admin-welcome-message'); ?></p>
                         <ul>
-                            <li><a href="https://github.com/syhussaini/wp_plugins/issues" target="_blank"><?php echo esc_html__('Create a GitHub Issue', 'admin-welcome-message'); ?></a></li>
-                            <li><a href="https://www.zaha.in" target="_blank"><?php echo esc_html__('Visit our website', 'admin-welcome-message'); ?></a></li>
+                            <li><a href="https://github.com/syhussaini/wp_plugins/issues" target="_blank"><?php echo esc_html__('Create a GitHub Issue', 'zaha-admin-welcome-message'); ?></a></li>
+                            <li><a href="https://www.zaha.in" target="_blank"><?php echo esc_html__('Visit our website', 'zaha-admin-welcome-message'); ?></a></li>
                         </ul>
                     </div>
                 </div>
@@ -581,15 +579,15 @@ class Settings {
      * Render section descriptions
      */
     public function render_content_section() {
-        echo '<p>' . esc_html__('Configure the content and appearance of your admin welcome modal.', 'admin-welcome-message') . '</p>';
+        echo '<p>' . esc_html__('Configure the content and appearance of your admin welcome modal.', 'zaha-admin-welcome-message') . '</p>';
     }
     
     public function render_behavior_section() {
-        echo '<p>' . esc_html__('Control how the modal behaves when users interact with it.', 'admin-welcome-message') . '</p>';
+        echo '<p>' . esc_html__('Control how the modal behaves when users interact with it.', 'zaha-admin-welcome-message') . '</p>';
     }
     
     public function render_appearance_section() {
-        echo '<p>' . esc_html__('Customize the colors and visual appearance of your modal.', 'admin-welcome-message') . '</p>';
+        echo '<p>' . esc_html__('Customize the colors and visual appearance of your modal.', 'zaha-admin-welcome-message') . '</p>';
     }
     
     /**

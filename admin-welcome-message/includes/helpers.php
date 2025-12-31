@@ -15,11 +15,11 @@ if (!defined('ABSPATH')) {
  */
 function awm_get_options() {
     $defaults = [
-        'title' => __('Welcome to Your Site', 'admin-welcome-message'),
-        'message' => '<p>' . __('This is an important message for administrators. Please review the information below.', 'admin-welcome-message') . '</p>',
-        'cta_text' => __('Access Help', 'admin-welcome-message'),
+        'title' => __('Welcome to Your Site', 'zaha-admin-welcome-message'),
+        'message' => '<p>' . __('This is an important message for administrators. Please review the information below.', 'zaha-admin-welcome-message') . '</p>',
+        'cta_text' => __('Access Help', 'zaha-admin-welcome-message'),
         'cta_url' => admin_url('admin.php?page=wp-help-documents'),
-        'footer_note' => __("Don't show this again during my current session", 'admin-welcome-message'),
+        'footer_note' => __("Don't show this again during my current session", 'zaha-admin-welcome-message'),
         'dismiss_mode' => 'session',
         'cooldown_minutes' => 15,
         'roles' => [],

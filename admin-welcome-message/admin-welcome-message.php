@@ -1,16 +1,17 @@
 <?php
 /**
  * Plugin Name: Admin Welcome Message
- * Plugin URI: https://www.zaha.in
+ * Plugin URI: https://wordpress.org/plugins/admin-welcome-message
  * Description: A customizable admin modal that displays welcome messages with configurable content, styling, and session behavior.
  * Version: 1.1.2
  * Author: Syed Hussaini
+ * Author URI: https://www.zaha.in
  * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: admin-welcome-message
+ * Text Domain: zaha-admin-welcome-message
  * Domain Path: /languages
  * Requires at least: 5.8
- * Tested up to: 6.8
+ * Tested up to: 6.9
  * Requires PHP: 7.4
  *
  * @package AdminWelcomeMessage
@@ -49,11 +50,11 @@ if (!function_exists('awm_activate')) {
     function awm_activate() {
         // Set default options
         $default_options = [
-            'title' => __('Welcome to Your Site', 'admin-welcome-message'),
-            'message' => '<p>' . __('This is an important message for administrators. Please review the information below.', 'admin-welcome-message') . '</p>',
-            'cta_text' => __('Access Help', 'admin-welcome-message'),
+            'title' => __('Welcome to Your Site', 'zaha-admin-welcome-message'),
+            'message' => '<p>' . __('This is an important message for administrators. Please review the information below.', 'zaha-admin-welcome-message') . '</p>',
+            'cta_text' => __('Access Help', 'zaha-admin-welcome-message'),
             'cta_url' => admin_url('admin.php?page=wp-help-documents'),
-            'footer_note' => __("Don't show this again during my current session", 'admin-welcome-message'),
+            'footer_note' => __("Don't show this again during my current session", 'zaha-admin-welcome-message'),
             'dismiss_mode' => 'cooldown',
             'enable_session_hide' => true,
             'cooldown_minutes' => 15,
