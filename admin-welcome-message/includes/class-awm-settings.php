@@ -5,12 +5,12 @@
  * @package AdminWelcomeModal
  */
 
+namespace AWM;
+
 // Prevent direct access
 if (!defined('ABSPATH')) {
     exit;
 }
-
-namespace AWM;
 
 class Settings {
     
